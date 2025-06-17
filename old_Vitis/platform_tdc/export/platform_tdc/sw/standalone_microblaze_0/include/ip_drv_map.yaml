@@ -1,0 +1,9 @@
+Arty_AXITDC_0:
+- Arty_AXITDC
+- None
+axi_uartlite_0:
+- axi_uartlite
+- uartlite
+microblaze_0_axi_intc:
+- axi_intc
+- intc
