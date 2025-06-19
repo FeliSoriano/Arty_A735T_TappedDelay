@@ -2,7 +2,7 @@
 """
 Created on Thu Jun 19 09:17:11 2025
 
-@author: Felipe Soriano
+@author: Felipe Soriano, based on work by Lucas Finazzi
 """
 
 #%% Imports
