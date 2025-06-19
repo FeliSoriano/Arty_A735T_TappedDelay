@@ -2,8 +2,18 @@
 """
 Created on Thu Jun 19 09:17:11 2025
 
-@author: alumn
+@author: Felipe Soriano
 """
+
+#%% Imports
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+import matplotlib
+matplotlib.rcParams['pdf.fonttype'] = 42
+
+#%% Data and functions
 
 data1 = [
   [0x00000001, 0x66735190],
@@ -6159,3 +6169,136 @@ data3 = [
 
 
 print(f"len data1 = \t{len(data1)} \nlen data2 = \t{len(data2)} \nlen data3 = \t{len(data3)}")
+
+def DecodeVals(t):
+    fine_v   = [] 
+    coarse_v = []
+
+    
+    # decoding here
+    for i in range(len(t)):
+       
+        # Time-stamp data is contained in 32 lsb, meaning data[i][1]     
+        data = int(t[i][1])
+        # print(data)
+        fine = data & 0xFF    
+        coarse = (data >> 8)   
+
+        fine_v.append(fine)
+        coarse_v.append(coarse)
+    
+    return fine_v, coarse_v
+
+def GenerateCalib(t, clk=250E6):
+    
+    # get fine timestamps    
+    fine_ts, _ = DecodeVals(t)
+    
+    max_tap = np.max(fine_ts)
+    
+    bins = np.linspace(1, 192, 192)
+    fine_ts_hist, bins = np.histogram(fine_ts, bins=bins)
+    
+    Nsum = 0
+    for i in range(len(fine_ts_hist)):
+        Nsum += fine_ts_hist[i]
+    
+    total_s = 1/clk
+    table = np.zeros(len(fine_ts_hist) + 1)
+    for i in range(len(fine_ts_hist)):
+        table[i + 1] = fine_ts_hist[i] / Nsum * total_s
+        
+    return table, max_tap
+
+def CalculateTs(t, calib_table, max_tap=192, clk=250E6): # ASK: why not 350?
+    ts = []
+    
+    #table = calib_table[1:]
+    fine_v, coarse_v = DecodeVals(t)
+    for i in range(len(coarse_v)):
+        ts.append( coarse_v[i]/clk - calib_table[fine_v[i] - 1] )
+
+    return ts
+
+def RemoveOutliers(v, lower, upper):
+    vn = []
+    for i in range(len(v)):
+        if(v[i] <= upper and v[i] > lower):
+            vn.append(v[i])
+    return vn
+
+def PlotCalibration(t):
+    clk = 250E6
+
+    table, max_tap = GenerateCalib(t, clk=clk)
+    ts = CalculateTs(t, table, max_tap=max_tap, clk=clk)
+    
+    # in us
+    ts = [i*1E6 for i in ts]
+    
+    dt = np.diff(ts)
+    # usually, outliers are small in quantity
+    dt = RemoveOutliers(dt, 1.9999, 2.0001)    # necessary to remove outliers/bad measurements
+    
+    mu = np.mean(dt)
+    print(f"mu =   \t{mu} us")
+    print(f"freq = \t{1/mu *1e3} kHz") # es por 1e3 por que antes estaba x 1e6, paso de MHz a kHz
+    #std = np.std(dt)
+    bins = np.linspace(mu - 0.0001, mu + 0.0001, 100)
+    
+    plt.figure(3)
+    # plt.clf()
+    plt.hist(dt, bins=bins)
+    plt.locator_params(axis='x', nbins=6)
+    plt.xlabel(r"time diff [$\mathrm{\mu s}$]")
+    
+    x = np.linspace(1, 192, 192)
+    table_ps = [i*1E12 for i in table]
+    
+    cum_ps = []
+    sum_ = 0
+    for i in range(len(table_ps)):
+        cum_ps.append(sum_)
+        sum_ += table_ps[i]
+    
+    avg_delay = 1 / clk / max_tap * 1E12    # in ps
+    exp = [i*avg_delay for i in x]
+    
+    plt.figure(0)
+    # plt.clf()
+    plt.title("Integral Non-linearity CH0", size=14)
+    plt.plot(x, cum_ps, '.')
+    plt.plot(x, exp)
+    plt.xlabel("Tap", size=14)
+    plt.ylabel("Delay [ps]", size=14)
+    plt.xticks(size=14)
+    plt.yticks(size=14)
+    plt.tight_layout()
+
+#%% "Main"
+
+super_data = [data1, data2, data3]
+
+for i in range(len(super_data)):
+    PlotCalibration(super_data[i])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
