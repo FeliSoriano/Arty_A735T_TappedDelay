@@ -4,7 +4,12 @@
 /* === Includes needeed for MACRO funcions (and other things) === */
 
 #include "xparameters.h"
+#include "xuartlite.h"
 #include <stdint.h>
+
+/* === FUNCTIONALITY USED DEFINES  === */
+#define PYTHON
+#define CONTINUE 'F'
 
 /* === MACROS AND READ/WRITE MASKS === */
 #define CLR 0
@@ -36,10 +41,11 @@ void clr_clr(uint32_t baseaddr);
 
 /* TDC Handling functions */
 void rearmCHN(int chnNumber);
-int readCHN(int chnNumber, uint64_t *dataBuffer);
+int readCHN(int chnNumber, uint64_t *dataBuffer, XUartLite uartLiteInstance);
 
-/* UART related functions */
-void UART_Init(void);
+/* Communication related functions */
+void UART_Init(XUartLite *uartLiteInstance);
 void end_of_program(void);
+uint8_t uart_receive_msg(char *buffer, int max_len, XUartLite uartLiteInstance);
 
 #endif // HEADER

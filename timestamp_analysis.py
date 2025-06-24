@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 import matplotlib
 matplotlib.rcParams['pdf.fonttype'] = 42
 
-#%% Data and functions
+#%% Data
 
 data1 = [
   [0x00000001, 0x66735190],
@@ -6169,17 +6169,26 @@ data3 = [
 
 
 print(f"len data1 = \t{len(data1)} \nlen data2 = \t{len(data2)} \nlen data3 = \t{len(data3)}")
+#%% Functions
+
 
 def DecodeVals(t):
+    """
+    Parameters:
+    t (matrix)       : contains timestamp t[i][1] data and corresponding adress and trigger t[i][0]
+    
+    Returns:
+    fine_v (array)   : contains the 'fine' component of the timestamps
+    coarse_v (array) : contains the 'coarse' component of the timestamps
+    """
     fine_v   = [] 
     coarse_v = []
-
-    
     # decoding here
     for i in range(len(t)):
        
         # Time-stamp data is contained in 32 lsb, meaning data[i][1]     
-        data = int(t[i][1])
+        # data = int(t[i][1])
+        data = t[i][1]
         # print(data)
         fine = data & 0xFF    
         coarse = (data >> 8)   
@@ -6189,14 +6198,29 @@ def DecodeVals(t):
     
     return fine_v, coarse_v
 
-def GenerateCalib(t, clk=250E6):
+def GenerateCalib(t, clk=250E6, tap_number = 192):
+
+    """
+    Generates calibration table for the tapped delay line. Depending on the 'width' of the 
+    bin, the number of tap reached will be associated with more (or less) corresponding time.
+    Used to later calculate the actual arrival time of the signal.
+
+    Parameters:
+        t (matrix)       : contains timestamp t[i][1] data and corresponding adress and trigger t[i][0]
+        clk (int)        : clock frequency used by the TDC
+        tap_number (int) : maximum number of taps available in the system
+
+    Returns: 
+        table            : time value associated to each tap
+        max_tap          : highest tap reached     
+    """
     
     # get fine timestamps    
     fine_ts, _ = DecodeVals(t)
     
     max_tap = np.max(fine_ts)
     
-    bins = np.linspace(1, 192, 192)
+    bins = np.linspace(1, tap_number, tap_number)
     fine_ts_hist, bins = np.histogram(fine_ts, bins=bins)
     
     Nsum = 0
@@ -6210,7 +6234,22 @@ def GenerateCalib(t, clk=250E6):
         
     return table, max_tap
 
-def CalculateTs(t, calib_table, max_tap=192, clk=250E6): # ASK: why not 350?
+def CalculateTs(t, calib_table, max_tap=192, clk=250E6): 
+    """
+    Calculates the actual time associated to each fine + coarse measurement.
+    TODO: Change it so that it takes parameters fine_v and coarse_v (so they don't have to
+          be re-calculated in each function)
+
+    Parameters:
+        t (matrix)           : contains timestamp t[i][1] data and 
+                               corresponding adress and trigger t[i][0]
+        calib_table (array)  : Calibration table for the tapped-delay line
+        max_tap (int)        : highest tap reach (associated with the calib_table)
+        clk (int)            : clock frequency used by the TDC
+
+    Returns:
+        ts (array)           : timestamp, in seconds
+    """
     ts = []
     
     #table = calib_table[1:]
@@ -6221,14 +6260,37 @@ def CalculateTs(t, calib_table, max_tap=192, clk=250E6): # ASK: why not 350?
     return ts
 
 def RemoveOutliers(v, lower, upper):
+    """
+    Reduces an array size so that all it's values are contained within a given range.
+
+    Parameters:
+        v (array)    : array to be reduced
+        lower (num)  : lower limit of acceptable values (exclusive)
+        upper (num)  : upper limit of acceptable values (non-exlusive)
+
+    Returns:
+        vn (array)  : trimmed array
+    
+    """
     vn = []
     for i in range(len(v)):
         if(v[i] <= upper and v[i] > lower):
             vn.append(v[i])
     return vn
 
-def PlotCalibration(t):
-    clk = 250E6
+def PlotCalibration(t, clk = 250E6):
+
+    """
+    Plots both an histogram of the computed time-stamps and a linear plot with a comparisson 
+    between ideal tapped-line behavior vs actual measurement. Shows the 'weight' of each tap in 
+    the total line
+
+    Parameters:
+        t (matrix) : contains timestamp t[i][1] data and 
+                     corresponding adress and trigger t[i][0]
+        clk (int)  : clock frequency used by the TDC
+
+    """
 
     table, max_tap = GenerateCalib(t, clk=clk)
     ts = CalculateTs(t, table, max_tap=max_tap, clk=clk)
@@ -6237,14 +6299,17 @@ def PlotCalibration(t):
     ts = [i*1E6 for i in ts]
     
     dt = np.diff(ts)
+    print(dt)
     # usually, outliers are small in quantity
-    dt = RemoveOutliers(dt, 1.9999, 2.0001)    # necessary to remove outliers/bad measurements
+     
+    #TODO: HOW TO REMOVE OUTLIERS IF WE DON'T KNOW WHAT TO EXPECT?
+    dt = RemoveOutliers(dt, 1.33192, 1.33207)    # necessary to remove outliers/bad measurements
     
     mu = np.mean(dt)
     print(f"mu =   \t{mu} us")
     print(f"freq = \t{1/mu *1e3} kHz") # es por 1e3 por que antes estaba x 1e6, paso de MHz a kHz
     #std = np.std(dt)
-    bins = np.linspace(mu - 0.0001, mu + 0.0001, 100)
+    bins = np.linspace(mu -0.0001, mu+0.0001, 100)
     
     plt.figure(3)
     # plt.clf()
@@ -6277,16 +6342,14 @@ def PlotCalibration(t):
 
 #%% "Main"
 
-super_data = [data1, data2, data3]
-
-for i in range(len(super_data)):
-    PlotCalibration(super_data[i])
+file = "C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/data_folder/2025_06_23/python_test_750k_run0.txt"
 
 
 
 
+data = np.loadtxt(file, delimiter=",", skiprows=1, dtype='uint32', converters={0: lambda x: int(x, 16), 1: lambda x: int(x, 16)})
 
-
+PlotCalibration(data)
 
 
 

@@ -1,38 +1,53 @@
 
-#include <stdio.h>
+#include "xil_io.h"
 #include "xil_printf.h"
 #include "xparameters.h"
-#include "xil_io.h"
+#include "xuartlite.h"
+#include <stdio.h>
 
 #include "header.h"
 
-int main()
-{
-    UART_Init();
+int main() {
+  XUartLite uartLiteInstance;
+  UART_Init(&uartLiteInstance);
 
-    print("\r\n============\n\r");
-    print("Starting configuration:\n\r");
-    print_states(CHN0_BASEADDR);
+  uint64_t dataBuffer[BRAMsize];
+  int entries, exit = 0;
+  char op_buffer[32];
+  char op;
+  xil_printf("MicroBlaze READY\n\r");
+  while (!exit) {
 
-    /* Make sure both CLR and RUN are 0 */
-    clr_all(CHN0_BASEADDR);
+    if (uart_receive_msg(op_buffer, sizeof(op_buffer), uartLiteInstance)) {
+      op = op_buffer[0];
+    } else {
+      continue;
+    }
 
-    // uint32_t data_write = 1;
-    for (volatile int i = 0; i < 1000000; ++i)
-        ;
+    switch (op) {
+    case '0':
+      exit = 1;
+      break;
 
-    print("\r\n============\n\r");
-    print("Setting RUN to 1:\n\r");
-    set_run(CHN0_BASEADDR);
-    print_states(CHN0_BASEADDR);
+    case '1': /* set run mode */
+      set_run(CHN0_BASEADDR);
+      print_states(CHN0_BASEADDR);
+      break;
 
-    uint64_t dataBuffer[BRAMsize];
+    case '2':
+      entries = readCHN(0, dataBuffer, uartLiteInstance);
+      break;
 
-    int entries = readCHN(0, dataBuffer);
-    xil_printf("\n\r%d entries where read from CHN%d", entries, 0);
-    rearmCHN(0);
-    // while(1);
-    end_of_program();
+    case '3':
+      rearmCHN(0);
+      break;
 
-    return 0;
+    default:
+      break;
+    }
+  }
+
+  end_of_program();
+
+  return 0;
 }
