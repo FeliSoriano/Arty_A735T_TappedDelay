@@ -7,6 +7,7 @@ Created on Mon Jun 23 09:28:10 2025
 
 #%% Import, functions and some variables
 import serial
+import sys
 import time
 from datetime import datetime
 import numpy as np
@@ -21,6 +22,7 @@ EXIT_PROGRAM  = '0'
 RUN_MODE      = '1'
 READ_CHN      = '2'
 REARM_TDC     = '3'
+PAIR_MODE     = '4'
 CONTINUE_FLAG = 'F'
 
 # Read commands
@@ -45,7 +47,10 @@ def wait_for_message(ser, expected_msg ='', timeout=60):
     start_time = time.time()
 
     while time.time() - start_time < timeout:
-        line = ser.readline().decode('utf-8', errors='ignore').strip()
+        raw_line = ser.readline().decode('utf-8', errors='ignore')
+        # if (raw_line != '' and raw_line != '\r'):
+            # print(f"[Raw]: {repr(raw_line)}")
+        line = raw_line.strip()
         if line:
             print(f"[MicroBlaze]: {line}")
             if expected_msg and expected_msg.strip() in line:
@@ -53,6 +58,7 @@ def wait_for_message(ser, expected_msg ='', timeout=60):
 
     if expected_msg:
         print(f"Timeout waiting for: '{expected_msg}'")
+        ser.close()
     return False
             
 
@@ -77,6 +83,17 @@ def serial_write(ser, msg):
     print(f"[Python]: {msg}")
     ser.write(encoded_msg)
     
+def send_command(ser, chn, command):
+    """
+    Sends one of the possible UART commands to the TDC
+    
+    Parameters:
+        ser        : the serial.Serial object
+        chn        : the TDC channelto be controlled
+        command_nr : the command to be sent
+    """
+    msg = command + str(chn)
+    serial_write(ser, msg)
     
 def receive_chn_ts(ser, EoD = END_OF_DATA):
     """
@@ -120,70 +137,113 @@ def receive_chn_ts(ser, EoD = END_OF_DATA):
     return np.array(data, dtype=np.uint32)
 
 def save_ts(file_name, data, suffix=''):
-
     """
-    Saves a matrix to a .txt file, in csv format. The file name and save location are both
-    associated to the date in which they were generated
+    Saves matrix or list of matrices (one per channel) to a .txt file, in CSV hex format.
+    Handles single-channel (2D array) or multi-channel (list of 2D arrays) formats.
 
     Parameters:
         file_name (str) : name of the file in which data will be saved
-        data (array)    : data to be saved in the file 
-        suffix (str)    : a suffix to be added to the name, for ease of use inside a loop
+        data (array or list of arrays) : data to be saved
+        suffix (str)    : a suffix to be added to the name
     """
 
-    # Get current date
     current_date = datetime.now().strftime("%Y_%m_%d")
 
-    # Define folders
-    base_folder = os.path.dirname(os.path.abspath(__file__))  # same as script dir
-    data_folder = os.path.join(base_folder, "data_folder", current_date)
+    try:
+        base_folder = os.path.dirname(os.path.abspath(__file__))
+    except NameError:
+        base_folder = os.getcwd()
 
-    # Create folders if they don't exist
+    data_folder = os.path.join(base_folder, "data_folder", current_date)
     os.makedirs(data_folder, exist_ok=True)
 
-    # Construct full path
     full_path = os.path.join(data_folder, f"{file_name}_{suffix}.txt")
-
-    # Create a header
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     header = f"Timestamp data collected on {timestamp}"
 
-    # Save as hex, comma separated
-    np.savetxt(full_path, data, delimiter=",", fmt="%08X", header=header, comments='')
+    if isinstance(data, list):
+        data = [np.array(d) for d in data]
+        for arr in data:
+            if arr.shape[1] != 2:
+                raise ValueError(f"Each array must have 2 columns, got shape {arr.shape}")
+        
+        max_len = max(arr.shape[0] for arr in data)
+        padded = []
 
+        for arr in data:
+            pad_size = max_len - arr.shape[0]
+            if pad_size > 0:
+                padding = np.zeros((pad_size, arr.shape[1]), dtype=arr.dtype)
+                arr = np.vstack([arr, padding])
+            padded.append(arr)
+
+        final_data = np.hstack(padded)
+    else:
+        final_data = np.array(data)
+        if final_data.ndim != 2 or final_data.shape[1] != 2:
+            raise ValueError(f"Expected a 2D array with 2 columns, got shape {final_data.shape}")
+
+    if not np.issubdtype(final_data.dtype, np.integer):
+        raise TypeError("save_ts only supports integer data for hexadecimal formatting.")
+
+    np.savetxt(full_path, final_data.astype(np.uint32), delimiter=",", fmt="%08X", header=header, comments='')
     print(f"[Python] Data saved to {full_path}")
+
+
+def single_channel_run(file, chnNumber, timeBeforeReading, nrOfRuns = 1):
+    
+    data = []
+    
+    for i in range(nrOfRuns):
+        
+        send_command(ser, chnNumber, RUN_MODE)
+        # Wait x time after setting RUN_MODE before actually reading the data
+        wait_for_message(ser, timeout = timeBeforeReading) 
+        
+        send_command(ser, chnNumber, READ_CHN)
+        if (wait_for_message(ser, f"Reading CHN{chnNumber}", 30) ==  False):
+            sys.exit()
+        
+        ser.reset_input_buffer() # Clear input buffer, just in case
+        serial_write(ser, CONTINUE_FLAG)
+        data.append(receive_chn_ts(ser))
+
+        if (nrOfRuns > 1):
+            send_command(ser, chnNumber, REARM_TDC)
+            
+    save_ts(file, data, nrOfRuns)
 
 #%% Main code
 
-ser = serial.Serial('COM8', 9600, timeout = 0.5)
-number_of_runs = 1
-file_name = "python_test_750k"
+ser = serial.Serial('COM8', 115200, timeout = 0.5)
+chnNumber = 1
+nrOfRuns = 3
+file_name = f"CHN{chnNumber}_400kHz"
 
 ser.reset_input_buffer()
 if (wait_for_message(ser, "MicroBlaze READY", 80) ==  False):
-    exit
+    sys.exit()
 
 """TODO: Turn Run & Read rutine into a function """
-for i in range(number_of_runs):
+
+# send_command(ser, 0, PAIR_MODE)
+# wait_for_message(ser, timeout = 10)
+# paired_data = []
+# for i in range(2):
+#     send_command(ser, i, READ_CHN)
+
+#     if (wait_for_message(ser, f"Reading CHN{i}", 30) ==  False):
+#         sys.exit()
     
-    serial_write(ser, RUN_MODE)
-    wait_for_message(ser, 10)
+#     serial_write(ser, CONTINUE_FLAG)
+#     paired_data.append(receive_chn_ts(ser))
     
-    serial_write(ser, READ_CHN)
-    if (wait_for_message(ser, "CHN FULL", 30) ==  False):
-        exit
     
-    serial_write(ser, CONTINUE_FLAG)
-    data = receive_chn_ts(ser)
-    
-    save_ts(file_name, data, f"run{i}")
-    
-    serial_write(ser, REARM_TDC)
+single_channel_run(file_name, chnNumber, 10, nrOfRuns)
 
 serial_write(ser, EXIT_PROGRAM)
-wait_for_message(ser)
+wait_for_message(ser, timeout = 20)
 
 ser.close()
 
 #%%
-
