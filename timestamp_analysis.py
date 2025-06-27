@@ -6385,10 +6385,11 @@ file = "C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/data_folder/2025_06_27/CHN1_
 
 # for i in run_data:
 #     PlotCalibration(i)
-converters = {i: lambda x: int(x, 16) for i in range(2)}
-run_data1 = np.loadtxt(file, delimiter = ",", converters = converters, skiprows = 1, usecols=(0,1))
+# converters = {i: lambda x: int(x, 16) for i in range(2)}
+# run_data1 = np.loadtxt(file, delimiter = ",", converters = converters, skiprows = 1, usecols=(0,1))
 
-PlotCalibration(run_data1)
+data, _ = load_ts(file)
+PlotCalibration(data)
 #%% Paired channels test
 fileP = "C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/data_folder/2025_06_26/Paired_1250kHz_CHN1_.txt"
 
