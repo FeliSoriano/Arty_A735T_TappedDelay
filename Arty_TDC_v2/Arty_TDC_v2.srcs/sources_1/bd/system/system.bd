@@ -1849,12 +1849,12 @@
               },
               "SEG_AXITDC_1_reg0": {
                 "address_block": "/AXITDC_1/s_axi/reg0",
-                "offset": "0x00021000",
+                "offset": "0x00030000",
                 "range": "4K"
               },
               "SEG_AXITDC_1_reg0_1": {
                 "address_block": "/AXITDC_1/s_axi_1/reg0",
-                "offset": "0x00028000",
+                "offset": "0x00034000",
                 "range": "16K"
               },
               "SEG_axi_uartlite_0_Reg": {

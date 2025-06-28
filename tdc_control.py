@@ -147,7 +147,7 @@ def receive_chn_ts(ser, EoD = END_OF_DATA):
     print(f"Received {len(data)} timestamp entries.")
     return np.array(data, dtype=np.uint32)
 
-def save_ts(file_name, data, suffix='', current_ver = "v2"):
+def save_ts(file_name, data, suffix='', current_ver = "v2_1_1"):
     """
     Saves matrix or list of matrices (one per channel) to a .txt file, in CSV hex format.
     Handles single-channel (2D array) or multi-channel (list of 2D arrays) formats.
@@ -300,17 +300,18 @@ if (wait_for_message(ser, "MicroBlaze READY", 80) ==  False):
     sys.exit()
     
 
-# single_channel_run(ser, fileName, 1)
+single_channel_run(ser, fileName, chnNumber)
 
 # paired_channel_run(ser, fileName, 1, 0, nrOfRUns=nrOfRuns)
 
-send_command(ser, chnNumber, RUN_MODE)
-wait_for_message(ser, timeout = 30)
+# send_command(ser, chnNumber, RUN_MODE)
+# wait_for_message(ser, timeout = 30)
 
-send_command(ser, chnNumber, READ_CHN)
-continue_msg(ser)
-wait_for_message(ser, timeout = 30)
+# send_command(ser, chnNumber, READ_CHN)
+# continue_msg(ser)
+# wait_for_message(ser, "Reading CHN1", 30)
 
+# time.sleep(5)
 serial_write(ser, EXIT_PROGRAM)
 wait_for_message(ser, timeout = 20)
 

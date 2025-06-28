@@ -13,4 +13,5 @@ Changes made within a single version number are usually made on the same Vivado 
           _v1_1 & _v1_2 changed nothing but some warning fixing in Vivado, which led to a new version being built. This versions incorporated communication capabilites with Python so that the TDC channel could be controlled and it's data extracted. They work in conjuction with tdc_control.py
 - _v2  : 
   A second TDC channel was incorporated to the Vivado project, and UART's speed was increased to 115200. Vitis platform was built around this and paired channel reading functionality was added as well. A lot of timing warnings can be seen in this version. The goal is to fix them when moving onto _v2_1.
-  - _v2_1 : CW fixing, some adress changes, and un-linked pairs. Each is connected only to itself, to check if this fixes channel 2 problems. Vitis app and platform testing pending.
+  - _v2_1 : CW fixing, and un-linked pairs. Each is connected only to itself, to check if this fixes channel 2 problems. Vitis platform and app where tested and then deleted since no improvements from _v2 were made.
+  - _v2_1_1 : Second channel problems persist. Changed adressess to see if problem was fixed. Now, instead of always getting 0x00, you always get 0x01. Vitis platform and app were tested and then deleted since no improvements from _v2 were made.

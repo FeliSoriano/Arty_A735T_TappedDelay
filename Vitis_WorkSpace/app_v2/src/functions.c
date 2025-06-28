@@ -181,7 +181,7 @@ void print_states(int chnNumber) {
    *
    */
   uint8_t val = read_states(CHANNELS_BASEADDR[chnNumber]);
-  xil_printf("[READ - CHN%d] Data: 0x%02X\n\r", chnNumber, val);
+  xil_printf("\n\r[READ - CHN%d] Data: 0x%02X\n\r", chnNumber, val);
 }
 
 /* Write funcs */
