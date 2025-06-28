@@ -1219,11 +1219,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Wed Jun 11 13:32:03 UTC 2025</spirit:value>
+            <spirit:value>Fri Jun 27 22:31:22 UTC 2025</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:d94e775f</spirit:value>
+            <spirit:value>9:85300fe8</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1238,11 +1238,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Wed Jun 11 13:32:03 UTC 2025</spirit:value>
+            <spirit:value>Fri Jun 27 22:31:22 UTC 2025</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:e9c56a07</spirit:value>
+            <spirit:value>9:b1a07745</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1256,11 +1256,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Fri Jun 27 21:18:12 UTC 2025</spirit:value>
+            <spirit:value>Sat Jun 28 15:12:46 UTC 2025</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:e9c56a07</spirit:value>
+            <spirit:value>9:19d42cf7</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1275,11 +1275,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Fri Jun 27 21:16:56 UTC 2025</spirit:value>
+            <spirit:value>Sat Jun 28 15:12:35 UTC 2025</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:e9c56a07</spirit:value>
+            <spirit:value>9:b1a07745</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1290,7 +1290,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:e9c56a07</spirit:value>
+            <spirit:value>9:b1a07745</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1306,11 +1306,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Fri Jun 27 21:16:56 UTC 2025</spirit:value>
+            <spirit:value>Sat Jun 28 15:12:35 UTC 2025</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:d94e775f</spirit:value>
+            <spirit:value>9:85300fe8</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1326,11 +1326,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Fri Jun 27 21:16:56 UTC 2025</spirit:value>
+            <spirit:value>Sat Jun 28 15:12:35 UTC 2025</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:e9c56a07</spirit:value>
+            <spirit:value>9:b1a07745</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -2325,7 +2325,7 @@
       <spirit:modelParameter xsi:type="spirit:nameValueTypeType" spirit:dataType="integer">
         <spirit:name>NTaps</spirit:name>
         <spirit:displayName>Ntaps</spirit:displayName>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.NTaps">250</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.NTaps">192</spirit:value>
       </spirit:modelParameter>
     </spirit:modelParameters>
   </spirit:model>
@@ -2516,7 +2516,7 @@
     <spirit:parameter>
       <spirit:name>NTaps</spirit:name>
       <spirit:displayName>Ntaps</spirit:displayName>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.NTaps">250</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.NTaps">192</spirit:value>
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>Component_Name</spirit:name>

@@ -2,10 +2,10 @@
 -- Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
--- Date        : Fri Jun 27 18:18:11 2025
+-- Date        : Wed Jun 25 13:50:39 2025
 -- Host        : ASUS-Soriano running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode synth_stub
---               c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/ip/system_AXITDC_0_0/system_AXITDC_0_0_stub.vhdl
+-- Command     : write_vhdl -force -mode synth_stub -rename_top system_AXITDC_0_0 -prefix
+--               system_AXITDC_0_0_ system_AXITDC_0_0_stub.vhdl
 -- Design      : system_AXITDC_0_0
 -- Purpose     : Stub declaration of top-level module interface
 -- Device      : xc7a35ticsg324-1L

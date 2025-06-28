@@ -253,7 +253,7 @@ ARCHITECTURE system_AXITDC_1_0_arch OF system_AXITDC_1_0 IS
 BEGIN
   U0 : AXITDC
     GENERIC MAP (
-      NTaps => 250
+      NTaps => 192
     )
     PORT MAP (
       s_axi_aclk => s_axi_aclk,

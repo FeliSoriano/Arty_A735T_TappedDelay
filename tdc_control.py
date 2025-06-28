@@ -24,10 +24,12 @@ READ_CHN      = '2'
 REARM_TDC     = '3'
 PAIR_MODE     = '4'
 CONTINUE_FLAG = 'F'
+TEST_STATES   = 'T'
 
 # Read commands
 END_OF_DATA = "EoD"
 
+# def test_state_changes
 
 
 def wait_for_message(ser, expected_msg ='', timeout=60): 
@@ -58,7 +60,7 @@ def wait_for_message(ser, expected_msg ='', timeout=60):
 
     if expected_msg:
         print(f"Timeout waiting for: '{expected_msg}'")
-        ser.close()
+        # ser.close()
     return False
             
 
@@ -94,6 +96,15 @@ def send_command(ser, chn, command):
     """
     msg = command + str(chn)
     serial_write(ser, msg)
+
+def continue_msg(ser):
+    """
+    Sends CONTINUE msg via UART terminal
+    
+    Parameters:
+        ser : The serial.Serial object
+    """
+    serial_write(ser, CONTINUE_FLAG)
     
 def receive_chn_ts(ser, EoD = END_OF_DATA):
     """
@@ -136,7 +147,7 @@ def receive_chn_ts(ser, EoD = END_OF_DATA):
     print(f"Received {len(data)} timestamp entries.")
     return np.array(data, dtype=np.uint32)
 
-def save_ts(file_name, data, suffix=''):
+def save_ts(file_name, data, suffix='', current_ver = "v2"):
     """
     Saves matrix or list of matrices (one per channel) to a .txt file, in CSV hex format.
     Handles single-channel (2D array) or multi-channel (list of 2D arrays) formats.
@@ -154,7 +165,7 @@ def save_ts(file_name, data, suffix=''):
     except NameError:
         base_folder = os.getcwd()
 
-    data_folder = os.path.join(base_folder, "data_folder", current_date)
+    data_folder = os.path.join(base_folder, "data_folder", current_ver, current_date)
     os.makedirs(data_folder, exist_ok=True)
 
     full_path = os.path.join(data_folder, f"{file_name}_{suffix}.txt")
@@ -189,8 +200,28 @@ def save_ts(file_name, data, suffix=''):
     np.savetxt(full_path, final_data.astype(np.uint32), delimiter=",", fmt="%08X", header=header, comments='')
     print(f"[Python] Data saved to {full_path}")
 
-
-def single_channel_run(file, chnNumber, timeBeforeReading, nrOfRuns = 1):
+# TODO: Maybe change it so that the following functions have a default name with some
+#       info instead of having to manually pass it as an argument
+def single_channel_run(ser, fileName, chnNumber, timeBeforeReading = 10, nrOfRuns = 1):
+    
+    """
+    Single channel run rutine. It sets the specified channel into RUN_MODE and then
+    waits timeBeforeReading seconds before reading the data, whether the channel is full
+    or not. If nrOfRuns is greater than one, the channel is re-armed and the process 
+    repeated.
+    Data is then saved to a file in columns. Each pair of columns corresponds to a single
+    run, even columns give addr and trigger data, while odd columns have timestamp info.
+    
+    Parameters:
+        ser           : The serial.Serial object
+        fileName (str): Name of the file where the data will be saved
+        chnNumber(int): TDC channel to be used
+        timeBeforeReading (int): Time to wait between setting channel to run and reading
+                                 the corresponding data, in seconds.
+        nrOfRuns(int) : Number of runs to be performed
+        
+    Returns (nothing) : Just saves the data to a file 
+    """
     
     data = []
     
@@ -210,36 +241,75 @@ def single_channel_run(file, chnNumber, timeBeforeReading, nrOfRuns = 1):
 
         if (nrOfRuns > 1):
             send_command(ser, chnNumber, REARM_TDC)
+            wait_for_message(ser, f"Rearming CHN{chnNumber}", 5)
+    # if len(data[0]) > 0:       
+    save_ts(fileName, data, nrOfRuns)
+    
+    
+def paired_channel_run(ser, fileName, startChn, stopChn, timeBeforeReading = 10, nrOfRUns = 1):
+    """
+    Paired channel run rutine. 
+    
+    Parameters:
+        ser           : The serial.Serial object
+        fileName (str): Name of the file where the data will be saved
+        
+        THIS IS WRONG. THIS FUNCTION MAKE SIT SO THAT startChn AND stopChn ARE
+        THE ORDER OF READING, NOT THE ACTUAL SETTING OF START AND STOP CHN. THIS IS
+        ACTUALLY GIVEN DEPENDING ON WICH CHANNEL WAS SET TO RUN FIRST. FIX
+        
+        
+        startChn(int) : TDC channel to be used to mark the 'start' of the event
+        stopChn (int) : TDC channel to be used to mark the 'stop' of the event
+        timeBeforeReading (int): Time to wait between setting channel to run and reading
+                                 the corresponding data, in seconds.
+        nrOfRuns(int) : Number of runs to be performed
+        
+    Returns (nothing): Just saves data to a file
+    """
+    chnOrder = [startChn, stopChn] 
+    pairedData = []
+    for i in range(nrOfRuns):
+        # In this case the chn argument doesn't do anything
+        # IT ACTUALLY DOES MATTER TODO: fix this 
+        send_command(ser, startChn, PAIR_MODE) 
+        wait_for_message(ser, timeout = timeBeforeReading)
+        for j in range(2):
+            send_command(ser, chnOrder[j], READ_CHN)
+            if (wait_for_message(ser, f"Reading CHN{chnOrder[j]}", 30) ==  False):
+                print(f"Warning - Problem with CHN{chnOrder[j]}'s data")
+            continue_msg(ser)
+            pairedData.append(receive_chn_ts(ser))
             
-    save_ts(file, data, nrOfRuns)
+        if (nrOfRuns > 1):
+            send_command(ser, startChn, REARM_TDC)
+            wait_for_message(ser, f"Rearming CHN{startChn}", 10)
+            send_command(ser, stopChn, REARM_TDC)
+            wait_for_message(ser, f"Rearming CHN{stopChn}", 10)
 
+    save_ts(fileName, pairedData, nrOfRUns)
 #%% Main code
 
 ser = serial.Serial('COM8', 115200, timeout = 0.5)
 chnNumber = 1
 nrOfRuns = 3
-file_name = f"CHN{chnNumber}_400kHz"
+fileName = "test"
 
-ser.reset_input_buffer()
+# ser.reset_input_buffer()
 if (wait_for_message(ser, "MicroBlaze READY", 80) ==  False):
     sys.exit()
-
-"""TODO: Turn Run & Read rutine into a function """
-
-# send_command(ser, 0, PAIR_MODE)
-# wait_for_message(ser, timeout = 10)
-# paired_data = []
-# for i in range(2):
-#     send_command(ser, i, READ_CHN)
-
-#     if (wait_for_message(ser, f"Reading CHN{i}", 30) ==  False):
-#         sys.exit()
     
-#     serial_write(ser, CONTINUE_FLAG)
-#     paired_data.append(receive_chn_ts(ser))
-    
-    
-single_channel_run(file_name, chnNumber, 10, nrOfRuns)
+
+# single_channel_run(ser, fileName, 1)
+
+# paired_channel_run(ser, fileName, 1, 0, nrOfRUns=nrOfRuns)
+
+send_command(ser, chnNumber, RUN_MODE)
+wait_for_message(ser, timeout = 30)
+
+send_command(ser, chnNumber, READ_CHN)
+continue_msg(ser)
+wait_for_message(ser, timeout = 30)
 
 serial_write(ser, EXIT_PROGRAM)
 wait_for_message(ser, timeout = 20)

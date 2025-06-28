@@ -20,6 +20,9 @@ int main() {
   char op_buffer[32];
   char op;
   int chnNumber;
+  xil_printf("Initial States: \r\n");
+  print_states(0);
+  print_states(1);
   xil_printf("MicroBlaze READY\n\r");
   //   print_states(chnNumber);
 
@@ -47,6 +50,9 @@ int main() {
       entries = readCHN(chnNumber, uartLiteInstance);
       if (entries == BRAMsize && !paired) {
         set_clr(chnNumber);
+      } else if (paired && chnNumber == 0) {
+        set_clr(1);
+        set_clr(0);
       }
       break;
 
@@ -66,11 +72,14 @@ int main() {
     default:
       break;
     }
+
   }
 
   end_of_program(&uartLiteInstance);
 
   xil_printf("\n\rEntering infinite while!\n\r");
+  set_clr(0);
+  set_clr(1);
   while (1)
     ;
 

@@ -1506,7 +1506,7 @@
         "inst_hier_path": "AXITDC_0",
         "parameters": {
           "NTaps": {
-            "value": "250"
+            "value": "192"
           }
         },
         "interface_ports": {
@@ -1596,7 +1596,7 @@
         "inst_hier_path": "AXITDC_1",
         "parameters": {
           "NTaps": {
-            "value": "250"
+            "value": "192"
           }
         },
         "interface_ports": {
@@ -1709,7 +1709,7 @@
       "AXITDC_0_trigger_out": {
         "ports": [
           "AXITDC_0/trigger_out",
-          "AXITDC_1/trigger_in"
+          "AXITDC_0/trigger_in"
         ]
       },
       "AXITDC_1_led_out": {
@@ -1721,7 +1721,7 @@
       "AXITDC_1_trigger_out": {
         "ports": [
           "AXITDC_1/trigger_out",
-          "AXITDC_0/trigger_in"
+          "AXITDC_1/trigger_in"
         ]
       },
       "clk_1": {
@@ -1849,12 +1849,12 @@
               },
               "SEG_AXITDC_1_reg0": {
                 "address_block": "/AXITDC_1/s_axi/reg0",
-                "offset": "0x00028000",
+                "offset": "0x00021000",
                 "range": "4K"
               },
               "SEG_AXITDC_1_reg0_1": {
                 "address_block": "/AXITDC_1/s_axi_1/reg0",
-                "offset": "0x0002C000",
+                "offset": "0x00028000",
                 "range": "16K"
               },
               "SEG_axi_uartlite_0_Reg": {

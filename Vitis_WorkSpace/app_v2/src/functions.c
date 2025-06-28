@@ -57,7 +57,6 @@ void UART_Init(XUartLite *uartLiteInstance) {
   xil_printf("\n\r                                 888");
   xil_printf("\n\r                            Y8b d88P");
   xil_printf("\n\r                              Y88P");
-
 #else
 /* In case I later want to add some kind of msg */
 #endif
@@ -111,19 +110,17 @@ uint8_t uart_receive_msg(char *buffer, int max_len,
   return received;
 }
 
-uint8_t wait_for_flag(XUartLite uartLiteInstance)
-
-/**
- * @brief This function is meant to be used as a hand-shake with the other end
- * of the communication. The program will pause until the 'continue' msg is
- * received.
- *
- * @param[in] uartLiteInstance. Uart Lite instance.
- *
- * @return 1 if the 'continue' msg is received, 0 if a termination character is
- * received instead.
- */
-{
+uint8_t wait_for_flag(XUartLite uartLiteInstance) {
+  /**
+   * @brief This function is meant to be used as a hand-shake with the other end
+   * of the communication. The program will pause until the 'continue' msg is
+   * received.
+   *
+   * @param[in] uartLiteInstance. Uart Lite instance.
+   *
+   * @return 1 if the 'continue' msg is received, 0 if a termination character
+   * is received instead.
+   */
   char c = '0';
   while (c != CONTINUE) {
     while (!XUartLite_IsReceiveEmpty(uartLiteInstance.RegBaseAddress)) {
@@ -282,11 +279,11 @@ int readCHN(int chnNumber, XUartLite uartLiteInstance) {
   uint64_t BRAMdata = 0;
 
   uint32_t bram_base = CHANNELS_BRAMADDR[chnNumber];
-  uint32_t ctrl_base = CHANNELS_BASEADDR[chnNumber];
+  // uint32_t ctrl_base = CHANNELS_BASEADDR[chnNumber];
 
   /* This two are here purely for debugging, that's why they are hard-coded */
-  print_states(0);
-  print_states(1);
+  // print_states(0);
+  // print_states(1);
 
   xil_printf("Reading CHN%d\n\r", chnNumber);
 
@@ -345,12 +342,13 @@ void rearmCHN(int chnNumber) {
    */
   // uint32_t bram_base = CHN0_BRAMADDR;
   uint32_t ctrl_base = CHANNELS_BASEADDR[chnNumber];
-
+  print_states(chnNumber);
   /* let's just pray someone got us into a CLR
   state and that it will eventually finish with no issues */
-  while (
-      is_full(ctrl_base)) /* this is supposed to wait until we reach CLR_DONE */
-    ;
+  while (is_full(ctrl_base)) {
+    ; /* this is supposed to wait until we reach CLR_DONE */
+  }
+
   xil_printf("\n\rRearming CHN%d\n\r", chnNumber);
   set_run(ctrl_base); /* clr back to 0 and run to 1*/
 }

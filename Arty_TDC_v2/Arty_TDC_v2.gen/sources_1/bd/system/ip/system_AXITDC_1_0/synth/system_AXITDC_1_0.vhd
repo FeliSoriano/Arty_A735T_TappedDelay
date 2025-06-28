@@ -191,7 +191,7 @@ ARCHITECTURE system_AXITDC_1_0_arch OF system_AXITDC_1_0 IS
   ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
   ATTRIBUTE CHECK_LICENSE_TYPE OF system_AXITDC_1_0_arch : ARCHITECTURE IS "system_AXITDC_1_0,AXITDC,{}";
   ATTRIBUTE CORE_GENERATION_INFO : STRING;
-  ATTRIBUTE CORE_GENERATION_INFO OF system_AXITDC_1_0_arch: ARCHITECTURE IS "system_AXITDC_1_0,AXITDC,{x_ipProduct=Vivado 2023.2,x_ipVendor=xilinx.com,x_ipLibrary=user,x_ipName=AXITDC,x_ipVersion=1.1,x_ipCoreRevision=2,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,NTaps=250}";
+  ATTRIBUTE CORE_GENERATION_INFO OF system_AXITDC_1_0_arch: ARCHITECTURE IS "system_AXITDC_1_0,AXITDC,{x_ipProduct=Vivado 2023.2,x_ipVendor=xilinx.com,x_ipLibrary=user,x_ipName=AXITDC,x_ipVersion=1.1,x_ipCoreRevision=2,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,NTaps=192}";
   ATTRIBUTE IP_DEFINITION_SOURCE : STRING;
   ATTRIBUTE IP_DEFINITION_SOURCE OF system_AXITDC_1_0_arch: ARCHITECTURE IS "package_project";
   ATTRIBUTE X_INTERFACE_INFO : STRING;
@@ -261,7 +261,7 @@ ARCHITECTURE system_AXITDC_1_0_arch OF system_AXITDC_1_0 IS
 BEGIN
   U0 : AXITDC
     GENERIC MAP (
-      NTaps => 250
+      NTaps => 192
     )
     PORT MAP (
       s_axi_aclk => s_axi_aclk,

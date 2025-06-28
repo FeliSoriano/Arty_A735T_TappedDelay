@@ -2,10 +2,10 @@
 // Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-// Date        : Fri Jun 27 16:51:57 2025
+// Date        : Wed Jun 25 13:48:40 2025
 // Host        : ASUS-Soriano running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode synth_stub
-//               c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/ip/system_xbar_0/system_xbar_0_stub.v
+// Command     : write_verilog -force -mode synth_stub -rename_top system_xbar_0 -prefix
+//               system_xbar_0_ system_xbar_0_stub.v
 // Design      : system_xbar_0
 // Purpose     : Stub declaration of top-level module interface
 // Device      : xc7a35ticsg324-1L
