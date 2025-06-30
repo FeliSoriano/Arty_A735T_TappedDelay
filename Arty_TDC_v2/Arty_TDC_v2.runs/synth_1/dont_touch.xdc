@@ -59,9 +59,6 @@ set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==system_rst_
 # IP: bd/system/ip/system_AXITDC_1_0/system_AXITDC_1_0.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==system_AXITDC_1_0 || ORIG_REF_NAME==system_AXITDC_1_0} -quiet] -quiet
 
-# IP: bd/system/ip/system_util_ds_buf_0_0/system_util_ds_buf_0_0.xci
-set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==system_util_ds_buf_0_0 || ORIG_REF_NAME==system_util_ds_buf_0_0} -quiet] -quiet
-
 # IP: bd/system/ip/system_auto_cc_0/system_auto_cc_0.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==system_auto_cc_0 || ORIG_REF_NAME==system_auto_cc_0} -quiet] -quiet
 

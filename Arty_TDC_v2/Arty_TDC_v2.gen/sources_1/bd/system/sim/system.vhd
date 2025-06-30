@@ -2,7 +2,7 @@
 --Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
---Date        : Sat Jun 28 15:40:02 2025
+--Date        : Mon Jun 30 15:43:28 2025
 --Host        : ASUS-Soriano running 64-bit major release  (build 9200)
 --Command     : generate_target system.bd
 --Design      : system
@@ -1692,10 +1692,10 @@ architecture STRUCTURE of microblaze_0_local_memory_imp_OGE0N8 is
   signal NLW_ilmb_v10_LMB_Rst_UNCONNECTED : STD_LOGIC;
   signal NLW_lmb_bram_rsta_busy_UNCONNECTED : STD_LOGIC;
   signal NLW_lmb_bram_rstb_busy_UNCONNECTED : STD_LOGIC;
-  attribute BMM_INFO_ADDRESS_SPACE : string;
-  attribute BMM_INFO_ADDRESS_SPACE of dlmb_bram_if_cntlr : label is "byte  0x00000000 32 > system microblaze_0_local_memory/lmb_bram";
   attribute KEEP_HIERARCHY : string;
   attribute KEEP_HIERARCHY of dlmb_bram_if_cntlr : label is "yes";
+  attribute bmm_info_address_space : string;
+  attribute bmm_info_address_space of dlmb_bram_if_cntlr : label is "byte  0x00000000 32 > system microblaze_0_local_memory/lmb_bram";
 begin
   DLMB_ce <= microblaze_0_dlmb_CE;
   DLMB_readdbus(0 to 31) <= microblaze_0_dlmb_READDBUS(0 to 31);
@@ -3303,10 +3303,10 @@ entity system is
     usb_uart_rxd : in STD_LOGIC;
     usb_uart_txd : out STD_LOGIC
   );
-  attribute CORE_GENERATION_INFO : string;
-  attribute CORE_GENERATION_INFO of system : entity is "system,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=system,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=32,numReposBlks=23,numNonXlnxBlks=0,numHierBlks=9,maxHierDepth=1,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=11,da_board_cnt=2,da_clkrst_cnt=21,da_mb_cnt=1,synth_mode=Hierarchical}";
-  attribute HW_HANDOFF : string;
-  attribute HW_HANDOFF of system : entity is "system.hwdef";
+  attribute core_generation_info : string;
+  attribute core_generation_info of system : entity is "system,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=system,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=31,numReposBlks=22,numNonXlnxBlks=0,numHierBlks=9,maxHierDepth=1,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=11,da_board_cnt=2,da_clkrst_cnt=21,da_mb_cnt=1,synth_mode=Hierarchical}";
+  attribute hw_handoff : string;
+  attribute hw_handoff of system : entity is "system.hwdef";
 end system;
 
 architecture STRUCTURE of system is
@@ -3603,12 +3603,6 @@ architecture STRUCTURE of system is
     led_out : out STD_LOGIC_VECTOR ( 2 downto 0 )
   );
   end component system_AXITDC_1_0;
-  component system_util_ds_buf_0_0 is
-  port (
-    BUFG_I : in STD_LOGIC_VECTOR ( 0 to 0 );
-    BUFG_O : out STD_LOGIC_VECTOR ( 0 to 0 )
-  );
-  end component system_util_ds_buf_0_0;
   signal AXITDC_0_led_out : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal AXITDC_0_trigger_out : STD_LOGIC_VECTOR ( 10 downto 0 );
   signal AXITDC_1_led_out : STD_LOGIC_VECTOR ( 2 downto 0 );
@@ -3807,7 +3801,6 @@ architecture STRUCTURE of system is
   signal rst_clk_100M_mb_reset : STD_LOGIC;
   signal rst_clk_100M_peripheral_aresetn : STD_LOGIC_VECTOR ( 0 to 0 );
   signal rst_clk_250_peripheral_aresetn : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal util_ds_buf_0_BUFG_O : STD_LOGIC_VECTOR ( 0 to 0 );
   signal NLW_AXITDC_0_s_axi_1_bid_UNCONNECTED : STD_LOGIC_VECTOR ( 11 downto 0 );
   signal NLW_AXITDC_0_s_axi_1_rid_UNCONNECTED : STD_LOGIC_VECTOR ( 11 downto 0 );
   signal NLW_AXITDC_1_s_axi_1_bid_UNCONNECTED : STD_LOGIC_VECTOR ( 11 downto 0 );
@@ -3819,18 +3812,18 @@ architecture STRUCTURE of system is
   signal NLW_rst_clk_250_bus_struct_reset_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
   signal NLW_rst_clk_250_interconnect_aresetn_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
   signal NLW_rst_clk_250_peripheral_reset_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
-  attribute BMM_INFO_PROCESSOR : string;
-  attribute BMM_INFO_PROCESSOR of microblaze_0 : label is "microblaze-le > system microblaze_0_local_memory/dlmb_bram_if_cntlr";
   attribute KEEP_HIERARCHY : string;
   attribute KEEP_HIERARCHY of microblaze_0 : label is "yes";
-  attribute X_INTERFACE_INFO : string;
-  attribute X_INTERFACE_INFO of clk : signal is "xilinx.com:signal:clock:1.0 CLK.CLK CLK";
-  attribute X_INTERFACE_PARAMETER : string;
-  attribute X_INTERFACE_PARAMETER of clk : signal is "XIL_INTERFACENAME CLK.CLK, CLK_DOMAIN system_clk, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, INSERT_VIP 0, PHASE 0.0";
-  attribute X_INTERFACE_INFO of reset : signal is "xilinx.com:signal:reset:1.0 RST.RESET RST";
-  attribute X_INTERFACE_PARAMETER of reset : signal is "XIL_INTERFACENAME RST.RESET, INSERT_VIP 0, POLARITY ACTIVE_LOW";
-  attribute X_INTERFACE_INFO of usb_uart_rxd : signal is "xilinx.com:interface:uart:1.0 usb_uart RxD";
-  attribute X_INTERFACE_INFO of usb_uart_txd : signal is "xilinx.com:interface:uart:1.0 usb_uart TxD";
+  attribute bmm_info_processor : string;
+  attribute bmm_info_processor of microblaze_0 : label is "microblaze-le > system microblaze_0_local_memory/dlmb_bram_if_cntlr";
+  attribute x_interface_info : string;
+  attribute x_interface_info of clk : signal is "xilinx.com:signal:clock:1.0 CLK.CLK CLK";
+  attribute x_interface_parameter : string;
+  attribute x_interface_parameter of clk : signal is "XIL_INTERFACENAME CLK.CLK, CLK_DOMAIN system_clk, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, INSERT_VIP 0, PHASE 0.0";
+  attribute x_interface_info of reset : signal is "xilinx.com:signal:reset:1.0 RST.RESET RST";
+  attribute x_interface_parameter of reset : signal is "XIL_INTERFACENAME RST.RESET, INSERT_VIP 0, POLARITY ACTIVE_LOW";
+  attribute x_interface_info of usb_uart_rxd : signal is "xilinx.com:interface:uart:1.0 usb_uart RxD";
+  attribute x_interface_info of usb_uart_txd : signal is "xilinx.com:interface:uart:1.0 usb_uart TxD";
 begin
   axi_uartlite_0_UART_RxD <= usb_uart_rxd;
   clk_1 <= clk;
@@ -3899,7 +3892,7 @@ AXITDC_0: component system_AXITDC_0_0
       s_axi_wready => microblaze_0_axi_periph_M02_AXI_WREADY,
       s_axi_wstrb(3 downto 0) => microblaze_0_axi_periph_M02_AXI_WSTRB(3 downto 0),
       s_axi_wvalid => microblaze_0_axi_periph_M02_AXI_WVALID,
-      trigger_in(10 downto 0) => AXITDC_0_trigger_out(10 downto 0),
+      trigger_in(10 downto 0) => AXITDC_1_trigger_out(10 downto 0),
       trigger_out(10 downto 0) => AXITDC_0_trigger_out(10 downto 0)
     );
 AXITDC_1: component system_AXITDC_1_0
@@ -3961,7 +3954,7 @@ AXITDC_1: component system_AXITDC_1_0
       s_axi_wready => microblaze_0_axi_periph_M04_AXI_WREADY,
       s_axi_wstrb(3 downto 0) => microblaze_0_axi_periph_M04_AXI_WSTRB(3 downto 0),
       s_axi_wvalid => microblaze_0_axi_periph_M04_AXI_WVALID,
-      trigger_in(10 downto 0) => AXITDC_1_trigger_out(10 downto 0),
+      trigger_in(10 downto 0) => AXITDC_0_trigger_out(10 downto 0),
       trigger_out(10 downto 0) => AXITDC_1_trigger_out(10 downto 0)
     );
 axi_uartlite_0: component system_axi_uartlite_0_0
@@ -3991,7 +3984,7 @@ axi_uartlite_0: component system_axi_uartlite_0_0
     );
 clk_wiz_0: component system_clk_wiz_0_0
      port map (
-      clk_in1 => util_ds_buf_0_BUFG_O(0),
+      clk_in1 => clk_1,
       clk_out100 => clk_wiz_0_clk_out100,
       clk_out250 => clk_wiz_0_clk_out250
     );
@@ -4346,10 +4339,5 @@ rst_clk_250: component system_rst_clk_100M_1
       peripheral_aresetn(0) => rst_clk_250_peripheral_aresetn(0),
       peripheral_reset(0) => NLW_rst_clk_250_peripheral_reset_UNCONNECTED(0),
       slowest_sync_clk => clk_wiz_0_clk_out250
-    );
-util_ds_buf_0: component system_util_ds_buf_0_0
-     port map (
-      BUFG_I(0) => clk_1,
-      BUFG_O(0) => util_ds_buf_0_BUFG_O(0)
     );
 end STRUCTURE;

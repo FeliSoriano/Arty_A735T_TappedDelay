@@ -15,3 +15,5 @@ Changes made within a single version number are usually made on the same Vivado 
   A second TDC channel was incorporated to the Vivado project, and UART's speed was increased to 115200. Vitis platform was built around this and paired channel reading functionality was added as well. A lot of timing warnings can be seen in this version. The goal is to fix them when moving onto _v2_1.
   - _v2_1 : CW fixing, and un-linked pairs. Each is connected only to itself, to check if this fixes channel 2 problems. Vitis platform and app where tested and then deleted since no improvements from _v2 were made.
   - _v2_1_1 : Second channel problems persist. Changed adressess to see if problem was fixed. Now, instead of always getting 0x00, you always get 0x01. Vitis platform and app were tested and then deleted since no improvements from _v2 were made.
+  - _v2_1_2 : Mistankely skipped
+  - _v2_1_3 : Everything is the same as in _v2, but almost all warnings where fixed. This version replaces _v2.

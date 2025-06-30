@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date         : Sat Jun 28 15:45:10 2025
+| Date         : Mon Jun 30 15:48:25 2025
 | Host         : ASUS-Soriano running 64-bit major release  (build 9200)
 | Command      : report_methodology -file system_wrapper_methodology_drc_routed.rpt -pb system_wrapper_methodology_drc_routed.pb -rpx system_wrapper_methodology_drc_routed.rpx
 | Design       : system_wrapper
@@ -23,32 +23,21 @@ Table of Contents
           Floorplan: design_1
       Design limits: <entire design considered>
              Max violations: <unlimited>
-             Violations found: 17
+             Violations found: 16
 +-----------+------------------+------------------------------------------------------------------+------------+
 | Rule      | Severity         | Description                                                      | Violations |
 +-----------+------------------+------------------------------------------------------------------+------------+
-| TIMING-2  | Critical Warning | Invalid primary clock source pin                                 | 1          |
-| TIMING-4  | Critical Warning | Invalid primary clock redefinition on a clock tree               | 1          |
 | TIMING-17 | Critical Warning | Non-clocked sequential cell                                      | 2          |
 | CKLD-2    | Warning          | Clock Net has IO Driver, not a Clock Buf, and/or non-Clock loads | 2          |
 | LUTAR-1   | Warning          | LUT drives async reset alert                                     | 5          |
 | TIMING-9  | Warning          | Unknown CDC Logic                                                | 1          |
-| TIMING-18 | Warning          | Missing input or output delay                                    | 3          |
-| XDCC-1    | Warning          | Scoped Clock constraint overwritten with the same name           | 2          |
+| TIMING-18 | Warning          | Missing input or output delay                                    | 2          |
+| XDCC-1    | Warning          | Scoped Clock constraint overwritten with the same name           | 3          |
+| XDCC-7    | Warning          | Scoped Clock constraint overwritten on the same source           | 1          |
 +-----------+------------------+------------------------------------------------------------------+------------+
 
 2. REPORT DETAILS
 -----------------
-TIMING-2#1 Critical Warning
-Invalid primary clock source pin  
-A primary clock system_i/clk_wiz_0/inst/clk_in1 is created on an inappropriate pin system_i/clk_wiz_0/inst/clk_in1. It is recommended to create a primary clock only on a proper clock source (input port or primitive output pin with no timing arc)
-Related violations: <none>
-
-TIMING-4#1 Critical Warning
-Invalid primary clock redefinition on a clock tree  
-Invalid clock redefinition on a clock tree. The primary clock system_i/clk_wiz_0/inst/clk_in1 is defined downstream of clock clk and overrides its insertion delay and/or waveform definition
-Related violations: <none>
-
 TIMING-17#1 Critical Warning
 Non-clocked sequential cell  
 The clock pin system_i/AXITDC_0/U0/TDC/Delay_line/hitQ_reg/C is not reached by a timing clock
@@ -101,24 +90,19 @@ Related violations: <none>
 
 TIMING-18#1 Warning
 Missing input or output delay  
-An input delay is missing on reset relative to the rising and/or falling clock edge(s) of system_i/clk_wiz_0/inst/clk_in1.
+An input delay is missing on usb_uart_rxd relative to the rising and/or falling clock edge(s) of clk.
 Related violations: <none>
 
 TIMING-18#2 Warning
 Missing input or output delay  
-An input delay is missing on usb_uart_rxd relative to the rising and/or falling clock edge(s) of system_i/clk_wiz_0/inst/clk_in1.
-Related violations: <none>
-
-TIMING-18#3 Warning
-Missing input or output delay  
-An output delay is missing on usb_uart_txd relative to the rising and/or falling clock edge(s) of system_i/clk_wiz_0/inst/clk_in1.
+An output delay is missing on usb_uart_txd relative to the rising and/or falling clock edge(s) of clk.
 Related violations: <none>
 
 XDCC-1#1 Warning
 Scoped Clock constraint overwritten with the same name  
 A new clock constraint create_clock overrides a previous scoped clock constraint with the same name. It is not recommended to override a scoped (typically an IP) clock constraint and could result in unexpected behaviors.
 New: create_clock -period 10.000 -name clk -waveform {0.000 5.000} -add [get_ports -scoped_to_current_instance clk] (Source: c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/ip/system_AXITDC_1_0/src/Arty-A7-35-Master-clean.xdc (Line: 8))
-Previous: create_clock -period 10.000 -name clk -waveform {0.000 5.000} -add [get_ports -scoped_to_current_instance clk] (Source: c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/ip/system_AXITDC_0_0/src/Arty-A7-35-Master-clean.xdc (Line: 8))
+Previous: create_clock -period 10.000 [get_ports clk] (Source: c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/ip/system_clk_wiz_0_0/system_clk_wiz_0_0.xdc (Line: 53))
 Related violations: <none>
 
 XDCC-1#2 Warning
@@ -126,6 +110,20 @@ Scoped Clock constraint overwritten with the same name
 A new clock constraint create_clock overrides a previous scoped clock constraint with the same name. It is not recommended to override a scoped (typically an IP) clock constraint and could result in unexpected behaviors.
 New: create_clock -period 10.000 -name clk [get_ports clk] (Source: C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.srcs/constrs_1/imports/Downloads/Arty-A7-35-Master-clean.xdc (Line: 11))
 Previous: create_clock -period 10.000 -name clk -waveform {0.000 5.000} -add [get_ports -scoped_to_current_instance clk] (Source: c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/ip/system_AXITDC_1_0/src/Arty-A7-35-Master-clean.xdc (Line: 8))
+Related violations: <none>
+
+XDCC-1#3 Warning
+Scoped Clock constraint overwritten with the same name  
+A new clock constraint create_clock overrides a previous scoped clock constraint with the same name. It is not recommended to override a scoped (typically an IP) clock constraint and could result in unexpected behaviors.
+New: create_clock -period 10.000 [get_ports clk] (Source: c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/ip/system_clk_wiz_0_0/system_clk_wiz_0_0.xdc (Line: 53))
+Previous: create_clock -period 10.000 -name clk -waveform {0.000 5.000} -add [get_ports -scoped_to_current_instance clk] (Source: c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/ip/system_AXITDC_0_0/src/Arty-A7-35-Master-clean.xdc (Line: 8))
+Related violations: <none>
+
+XDCC-7#1 Warning
+Scoped Clock constraint overwritten on the same source  
+A new clock constraint create_clock overrides a previous scoped clock constraint defined on the same source. It is not recommended to override a scoped (typically an IP) clock constraint and could result in unexpected behaviors.
+New: create_clock -period 10.000 -name clk [get_ports clk] (Source: C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.srcs/constrs_1/imports/Downloads/Arty-A7-35-Master-clean.xdc (Line: 11))
+Previous: create_clock -period 10.000 [get_ports clk] (Source: c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/ip/system_clk_wiz_0_0/system_clk_wiz_0_0.xdc (Line: 53))
 Related violations: <none>
 
 

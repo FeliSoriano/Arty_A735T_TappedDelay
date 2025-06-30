@@ -12,7 +12,7 @@
     ** Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 
 source system_wrapper.tcl -notrace
-create_project: Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 565.027 ; gain = 180.934
+create_project: Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 564.824 ; gain = 179.613
 INFO: [IP_Flow 19-234] Refreshing IP repositories
 INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Users/alumn/AppData/Roaming/Xilinx/ip_repo'.
 INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2023.2/data/ip'.
@@ -28,80 +28,78 @@ INFO: [Designutils 20-5440] No compile time benefit to using incremental synthes
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 47880
+INFO: [Synth 8-7075] Helper process launched with PID 16740
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1450.953 ; gain = 440.559
+Starting RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 1449.516 ; gain = 440.020
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-638] synthesizing module 'system_wrapper' [C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/hdl/system_wrapper.vhd:28]
 INFO: [Synth 8-3491] module 'system' declared at 'c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/synth/system.vhd:3295' bound to instance 'system_i' of component 'system' [C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/hdl/system_wrapper.vhd:42]
 INFO: [Synth 8-638] synthesizing module 'system' [c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/synth/system.vhd:3312]
-INFO: [Synth 8-3491] module 'system_AXITDC_0_0' declared at 'C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.runs/synth_1/.Xil/Vivado-28776-ASUS-Soriano/realtime/system_AXITDC_0_0_stub.vhdl:6' bound to instance 'AXITDC_0' of component 'system_AXITDC_0_0' [c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/synth/system.vhd:3843]
-INFO: [Synth 8-638] synthesizing module 'system_AXITDC_0_0' [C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.runs/synth_1/.Xil/Vivado-28776-ASUS-Soriano/realtime/system_AXITDC_0_0_stub.vhdl:71]
-INFO: [Synth 8-3491] module 'system_AXITDC_1_0' declared at 'C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.runs/synth_1/.Xil/Vivado-28776-ASUS-Soriano/realtime/system_AXITDC_1_0_stub.vhdl:6' bound to instance 'AXITDC_1' of component 'system_AXITDC_1_0' [c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/synth/system.vhd:3905]
-INFO: [Synth 8-638] synthesizing module 'system_AXITDC_1_0' [C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.runs/synth_1/.Xil/Vivado-28776-ASUS-Soriano/realtime/system_AXITDC_1_0_stub.vhdl:71]
-INFO: [Synth 8-3491] module 'system_axi_uartlite_0_0' declared at 'C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.runs/synth_1/.Xil/Vivado-28776-ASUS-Soriano/realtime/system_axi_uartlite_0_0_stub.vhdl:6' bound to instance 'axi_uartlite_0' of component 'system_axi_uartlite_0_0' [c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/synth/system.vhd:3967]
-INFO: [Synth 8-638] synthesizing module 'system_axi_uartlite_0_0' [C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.runs/synth_1/.Xil/Vivado-28776-ASUS-Soriano/realtime/system_axi_uartlite_0_0_stub.vhdl:34]
-INFO: [Synth 8-3491] module 'system_clk_wiz_0_0' declared at 'C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.runs/synth_1/.Xil/Vivado-28776-ASUS-Soriano/realtime/system_clk_wiz_0_0_stub.vhdl:6' bound to instance 'clk_wiz_0' of component 'system_clk_wiz_0_0' [c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/synth/system.vhd:3992]
-INFO: [Synth 8-638] synthesizing module 'system_clk_wiz_0_0' [C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.runs/synth_1/.Xil/Vivado-28776-ASUS-Soriano/realtime/system_clk_wiz_0_0_stub.vhdl:15]
-INFO: [Synth 8-3491] module 'system_mdm_1_0' declared at 'C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.runs/synth_1/.Xil/Vivado-28776-ASUS-Soriano/realtime/system_mdm_1_0_stub.vhdl:6' bound to instance 'mdm_1' of component 'system_mdm_1_0' [c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/synth/system.vhd:3998]
-INFO: [Synth 8-638] synthesizing module 'system_mdm_1_0' [C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.runs/synth_1/.Xil/Vivado-28776-ASUS-Soriano/realtime/system_mdm_1_0_stub.vhdl:22]
-INFO: [Synth 8-3491] module 'system_microblaze_0_0' declared at 'C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.runs/synth_1/.Xil/Vivado-28776-ASUS-Soriano/realtime/system_microblaze_0_0_stub.vhdl:6' bound to instance 'microblaze_0' of component 'system_microblaze_0_0' [c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/synth/system.vhd:4011]
-INFO: [Synth 8-638] synthesizing module 'system_microblaze_0_0' [C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.runs/synth_1/.Xil/Vivado-28776-ASUS-Soriano/realtime/system_microblaze_0_0_stub.vhdl:64]
-INFO: [Synth 8-3491] module 'system_microblaze_0_axi_intc_0' declared at 'C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.runs/synth_1/.Xil/Vivado-28776-ASUS-Soriano/realtime/system_microblaze_0_axi_intc_0_stub.vhdl:6' bound to instance 'microblaze_0_axi_intc' of component 'system_microblaze_0_axi_intc_0' [c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/synth/system.vhd:4097]
-INFO: [Synth 8-638] synthesizing module 'system_microblaze_0_axi_intc_0' [C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.runs/synth_1/.Xil/Vivado-28776-ASUS-Soriano/realtime/system_microblaze_0_axi_intc_0_stub.vhdl:37]
+INFO: [Synth 8-3491] module 'system_AXITDC_0_0' declared at 'C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.runs/synth_1/.Xil/Vivado-19312-ASUS-Soriano/realtime/system_AXITDC_0_0_stub.vhdl:6' bound to instance 'AXITDC_0' of component 'system_AXITDC_0_0' [c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/synth/system.vhd:3836]
+INFO: [Synth 8-638] synthesizing module 'system_AXITDC_0_0' [C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.runs/synth_1/.Xil/Vivado-19312-ASUS-Soriano/realtime/system_AXITDC_0_0_stub.vhdl:71]
+INFO: [Synth 8-3491] module 'system_AXITDC_1_0' declared at 'C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.runs/synth_1/.Xil/Vivado-19312-ASUS-Soriano/realtime/system_AXITDC_1_0_stub.vhdl:6' bound to instance 'AXITDC_1' of component 'system_AXITDC_1_0' [c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/synth/system.vhd:3898]
+INFO: [Synth 8-638] synthesizing module 'system_AXITDC_1_0' [C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.runs/synth_1/.Xil/Vivado-19312-ASUS-Soriano/realtime/system_AXITDC_1_0_stub.vhdl:71]
+INFO: [Synth 8-3491] module 'system_axi_uartlite_0_0' declared at 'C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.runs/synth_1/.Xil/Vivado-19312-ASUS-Soriano/realtime/system_axi_uartlite_0_0_stub.vhdl:6' bound to instance 'axi_uartlite_0' of component 'system_axi_uartlite_0_0' [c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/synth/system.vhd:3960]
+INFO: [Synth 8-638] synthesizing module 'system_axi_uartlite_0_0' [C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.runs/synth_1/.Xil/Vivado-19312-ASUS-Soriano/realtime/system_axi_uartlite_0_0_stub.vhdl:34]
+INFO: [Synth 8-3491] module 'system_clk_wiz_0_0' declared at 'C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.runs/synth_1/.Xil/Vivado-19312-ASUS-Soriano/realtime/system_clk_wiz_0_0_stub.vhdl:6' bound to instance 'clk_wiz_0' of component 'system_clk_wiz_0_0' [c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/synth/system.vhd:3985]
+INFO: [Synth 8-638] synthesizing module 'system_clk_wiz_0_0' [C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.runs/synth_1/.Xil/Vivado-19312-ASUS-Soriano/realtime/system_clk_wiz_0_0_stub.vhdl:15]
+INFO: [Synth 8-3491] module 'system_mdm_1_0' declared at 'C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.runs/synth_1/.Xil/Vivado-19312-ASUS-Soriano/realtime/system_mdm_1_0_stub.vhdl:6' bound to instance 'mdm_1' of component 'system_mdm_1_0' [c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/synth/system.vhd:3991]
+INFO: [Synth 8-638] synthesizing module 'system_mdm_1_0' [C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.runs/synth_1/.Xil/Vivado-19312-ASUS-Soriano/realtime/system_mdm_1_0_stub.vhdl:22]
+INFO: [Synth 8-3491] module 'system_microblaze_0_0' declared at 'C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.runs/synth_1/.Xil/Vivado-19312-ASUS-Soriano/realtime/system_microblaze_0_0_stub.vhdl:6' bound to instance 'microblaze_0' of component 'system_microblaze_0_0' [c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/synth/system.vhd:4004]
+INFO: [Synth 8-638] synthesizing module 'system_microblaze_0_0' [C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.runs/synth_1/.Xil/Vivado-19312-ASUS-Soriano/realtime/system_microblaze_0_0_stub.vhdl:64]
+INFO: [Synth 8-3491] module 'system_microblaze_0_axi_intc_0' declared at 'C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.runs/synth_1/.Xil/Vivado-19312-ASUS-Soriano/realtime/system_microblaze_0_axi_intc_0_stub.vhdl:6' bound to instance 'microblaze_0_axi_intc' of component 'system_microblaze_0_axi_intc_0' [c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/synth/system.vhd:4090]
+INFO: [Synth 8-638] synthesizing module 'system_microblaze_0_axi_intc_0' [C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.runs/synth_1/.Xil/Vivado-19312-ASUS-Soriano/realtime/system_microblaze_0_axi_intc_0_stub.vhdl:37]
 INFO: [Synth 8-638] synthesizing module 'system_microblaze_0_axi_periph_0' [c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/synth/system.vhd:2320]
 INFO: [Synth 8-638] synthesizing module 'm00_couplers_imp_1RZ0IW6' [c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/synth/system.vhd:58]
 INFO: [Synth 8-256] done synthesizing module 'm00_couplers_imp_1RZ0IW6' (0#1) [c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/synth/system.vhd:58]
 INFO: [Synth 8-638] synthesizing module 'm01_couplers_imp_K87I2F' [c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/synth/system.vhd:159]
 INFO: [Synth 8-256] done synthesizing module 'm01_couplers_imp_K87I2F' (0#1) [c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/synth/system.vhd:159]
 INFO: [Synth 8-638] synthesizing module 'm02_couplers_imp_QYRHL1' [c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/synth/system.vhd:262]
-INFO: [Synth 8-3491] module 'system_auto_cc_0' declared at 'C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.runs/synth_1/.Xil/Vivado-28776-ASUS-Soriano/realtime/system_auto_cc_0_stub.vhdl:6' bound to instance 'auto_cc' of component 'system_auto_cc_0' [c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/synth/system.vhd:392]
-INFO: [Synth 8-638] synthesizing module 'system_auto_cc_0' [C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.runs/synth_1/.Xil/Vivado-28776-ASUS-Soriano/realtime/system_auto_cc_0_stub.vhdl:54]
+INFO: [Synth 8-3491] module 'system_auto_cc_0' declared at 'C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.runs/synth_1/.Xil/Vivado-19312-ASUS-Soriano/realtime/system_auto_cc_0_stub.vhdl:6' bound to instance 'auto_cc' of component 'system_auto_cc_0' [c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/synth/system.vhd:392]
+INFO: [Synth 8-638] synthesizing module 'system_auto_cc_0' [C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.runs/synth_1/.Xil/Vivado-19312-ASUS-Soriano/realtime/system_auto_cc_0_stub.vhdl:54]
 INFO: [Synth 8-256] done synthesizing module 'm02_couplers_imp_QYRHL1' (0#1) [c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/synth/system.vhd:262]
 INFO: [Synth 8-638] synthesizing module 'm03_couplers_imp_1LIFQL0' [c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/synth/system.vhd:501]
-INFO: [Synth 8-3491] module 'system_auto_cc_1' declared at 'C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.runs/synth_1/.Xil/Vivado-28776-ASUS-Soriano/realtime/system_auto_cc_1_stub.vhdl:6' bound to instance 'auto_cc' of component 'system_auto_cc_1' [c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/synth/system.vhd:740]
-INFO: [Synth 8-638] synthesizing module 'system_auto_cc_1' [C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.runs/synth_1/.Xil/Vivado-28776-ASUS-Soriano/realtime/system_auto_cc_1_stub.vhdl:54]
-INFO: [Synth 8-3491] module 'system_auto_pc_0' declared at 'C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.runs/synth_1/.Xil/Vivado-28776-ASUS-Soriano/realtime/system_auto_pc_0_stub.vhdl:6' bound to instance 'auto_pc' of component 'system_auto_pc_0' [c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/synth/system.vhd:785]
-INFO: [Synth 8-638] synthesizing module 'system_auto_pc_0' [C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.runs/synth_1/.Xil/Vivado-28776-ASUS-Soriano/realtime/system_auto_pc_0_stub.vhdl:68]
+INFO: [Synth 8-3491] module 'system_auto_cc_1' declared at 'C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.runs/synth_1/.Xil/Vivado-19312-ASUS-Soriano/realtime/system_auto_cc_1_stub.vhdl:6' bound to instance 'auto_cc' of component 'system_auto_cc_1' [c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/synth/system.vhd:740]
+INFO: [Synth 8-638] synthesizing module 'system_auto_cc_1' [C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.runs/synth_1/.Xil/Vivado-19312-ASUS-Soriano/realtime/system_auto_cc_1_stub.vhdl:54]
+INFO: [Synth 8-3491] module 'system_auto_pc_0' declared at 'C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.runs/synth_1/.Xil/Vivado-19312-ASUS-Soriano/realtime/system_auto_pc_0_stub.vhdl:6' bound to instance 'auto_pc' of component 'system_auto_pc_0' [c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/synth/system.vhd:785]
+INFO: [Synth 8-638] synthesizing module 'system_auto_pc_0' [C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.runs/synth_1/.Xil/Vivado-19312-ASUS-Soriano/realtime/system_auto_pc_0_stub.vhdl:68]
 INFO: [Synth 8-256] done synthesizing module 'm03_couplers_imp_1LIFQL0' (0#1) [c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/synth/system.vhd:501]
 INFO: [Synth 8-638] synthesizing module 'm04_couplers_imp_E2VWV5' [c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/synth/system.vhd:894]
-INFO: [Synth 8-3491] module 'system_auto_cc_2' declared at 'C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.runs/synth_1/.Xil/Vivado-28776-ASUS-Soriano/realtime/system_auto_cc_2_stub.vhdl:6' bound to instance 'auto_cc' of component 'system_auto_cc_2' [c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/synth/system.vhd:1024]
-INFO: [Synth 8-638] synthesizing module 'system_auto_cc_2' [C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.runs/synth_1/.Xil/Vivado-28776-ASUS-Soriano/realtime/system_auto_cc_2_stub.vhdl:54]
+INFO: [Synth 8-3491] module 'system_auto_cc_2' declared at 'C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.runs/synth_1/.Xil/Vivado-19312-ASUS-Soriano/realtime/system_auto_cc_2_stub.vhdl:6' bound to instance 'auto_cc' of component 'system_auto_cc_2' [c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/synth/system.vhd:1024]
+INFO: [Synth 8-638] synthesizing module 'system_auto_cc_2' [C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.runs/synth_1/.Xil/Vivado-19312-ASUS-Soriano/realtime/system_auto_cc_2_stub.vhdl:54]
 INFO: [Synth 8-256] done synthesizing module 'm04_couplers_imp_E2VWV5' (0#1) [c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/synth/system.vhd:894]
 INFO: [Synth 8-638] synthesizing module 'm05_couplers_imp_17ILSXC' [c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/synth/system.vhd:1133]
-INFO: [Synth 8-3491] module 'system_auto_cc_3' declared at 'C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.runs/synth_1/.Xil/Vivado-28776-ASUS-Soriano/realtime/system_auto_cc_3_stub.vhdl:6' bound to instance 'auto_cc' of component 'system_auto_cc_3' [c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/synth/system.vhd:1372]
-INFO: [Synth 8-638] synthesizing module 'system_auto_cc_3' [C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.runs/synth_1/.Xil/Vivado-28776-ASUS-Soriano/realtime/system_auto_cc_3_stub.vhdl:54]
-INFO: [Synth 8-3491] module 'system_auto_pc_1' declared at 'C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.runs/synth_1/.Xil/Vivado-28776-ASUS-Soriano/realtime/system_auto_pc_1_stub.vhdl:6' bound to instance 'auto_pc' of component 'system_auto_pc_1' [c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/synth/system.vhd:1417]
-INFO: [Synth 8-638] synthesizing module 'system_auto_pc_1' [C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.runs/synth_1/.Xil/Vivado-28776-ASUS-Soriano/realtime/system_auto_pc_1_stub.vhdl:68]
+INFO: [Synth 8-3491] module 'system_auto_cc_3' declared at 'C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.runs/synth_1/.Xil/Vivado-19312-ASUS-Soriano/realtime/system_auto_cc_3_stub.vhdl:6' bound to instance 'auto_cc' of component 'system_auto_cc_3' [c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/synth/system.vhd:1372]
+INFO: [Synth 8-638] synthesizing module 'system_auto_cc_3' [C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.runs/synth_1/.Xil/Vivado-19312-ASUS-Soriano/realtime/system_auto_cc_3_stub.vhdl:54]
+INFO: [Synth 8-3491] module 'system_auto_pc_1' declared at 'C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.runs/synth_1/.Xil/Vivado-19312-ASUS-Soriano/realtime/system_auto_pc_1_stub.vhdl:6' bound to instance 'auto_pc' of component 'system_auto_pc_1' [c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/synth/system.vhd:1417]
+INFO: [Synth 8-638] synthesizing module 'system_auto_pc_1' [C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.runs/synth_1/.Xil/Vivado-19312-ASUS-Soriano/realtime/system_auto_pc_1_stub.vhdl:68]
 INFO: [Synth 8-256] done synthesizing module 'm05_couplers_imp_17ILSXC' (0#1) [c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/synth/system.vhd:1133]
 INFO: [Synth 8-638] synthesizing module 's00_couplers_imp_1LZPV07' [c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/synth/system.vhd:2086]
 INFO: [Synth 8-256] done synthesizing module 's00_couplers_imp_1LZPV07' (0#1) [c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/synth/system.vhd:2086]
-INFO: [Synth 8-3491] module 'system_xbar_0' declared at 'C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.runs/synth_1/.Xil/Vivado-28776-ASUS-Soriano/realtime/system_xbar_0_stub.vhdl:6' bound to instance 'xbar' of component 'system_xbar_0' [c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/synth/system.vhd:3154]
-INFO: [Synth 8-638] synthesizing module 'system_xbar_0' [C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.runs/synth_1/.Xil/Vivado-28776-ASUS-Soriano/realtime/system_xbar_0_stub.vhdl:52]
+INFO: [Synth 8-3491] module 'system_xbar_0' declared at 'C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.runs/synth_1/.Xil/Vivado-19312-ASUS-Soriano/realtime/system_xbar_0_stub.vhdl:6' bound to instance 'xbar' of component 'system_xbar_0' [c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/synth/system.vhd:3154]
+INFO: [Synth 8-638] synthesizing module 'system_xbar_0' [C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.runs/synth_1/.Xil/Vivado-19312-ASUS-Soriano/realtime/system_xbar_0_stub.vhdl:52]
 INFO: [Synth 8-256] done synthesizing module 'system_microblaze_0_axi_periph_0' (0#1) [c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/synth/system.vhd:2320]
 INFO: [Synth 8-638] synthesizing module 'microblaze_0_local_memory_imp_OGE0N8' [c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/synth/system.vhd:1507]
-INFO: [Synth 8-3491] module 'system_dlmb_bram_if_cntlr_0' declared at 'C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.runs/synth_1/.Xil/Vivado-28776-ASUS-Soriano/realtime/system_dlmb_bram_if_cntlr_0_stub.vhdl:6' bound to instance 'dlmb_bram_if_cntlr' of component 'system_dlmb_bram_if_cntlr_0' [c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/synth/system.vhd:1721]
-INFO: [Synth 8-638] synthesizing module 'system_dlmb_bram_if_cntlr_0' [C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.runs/synth_1/.Xil/Vivado-28776-ASUS-Soriano/realtime/system_dlmb_bram_if_cntlr_0_stub.vhdl:32]
-INFO: [Synth 8-3491] module 'system_dlmb_v10_0' declared at 'C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.runs/synth_1/.Xil/Vivado-28776-ASUS-Soriano/realtime/system_dlmb_v10_0_stub.vhdl:6' bound to instance 'dlmb_v10' of component 'system_dlmb_v10_0' [c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/synth/system.vhd:1775]
-INFO: [Synth 8-638] synthesizing module 'system_dlmb_v10_0' [C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.runs/synth_1/.Xil/Vivado-28776-ASUS-Soriano/realtime/system_dlmb_v10_0_stub.vhdl:37]
-INFO: [Synth 8-3491] module 'system_ilmb_bram_if_cntlr_0' declared at 'C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.runs/synth_1/.Xil/Vivado-28776-ASUS-Soriano/realtime/system_ilmb_bram_if_cntlr_0_stub.vhdl:6' bound to instance 'ilmb_bram_if_cntlr' of component 'system_ilmb_bram_if_cntlr_0' [c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/synth/system.vhd:1803]
-INFO: [Synth 8-638] synthesizing module 'system_ilmb_bram_if_cntlr_0' [C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.runs/synth_1/.Xil/Vivado-28776-ASUS-Soriano/realtime/system_ilmb_bram_if_cntlr_0_stub.vhdl:32]
-INFO: [Synth 8-3491] module 'system_ilmb_v10_0' declared at 'C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.runs/synth_1/.Xil/Vivado-28776-ASUS-Soriano/realtime/system_ilmb_v10_0_stub.vhdl:6' bound to instance 'ilmb_v10' of component 'system_ilmb_v10_0' [c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/synth/system.vhd:1857]
-INFO: [Synth 8-638] synthesizing module 'system_ilmb_v10_0' [C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.runs/synth_1/.Xil/Vivado-28776-ASUS-Soriano/realtime/system_ilmb_v10_0_stub.vhdl:37]
-INFO: [Synth 8-3491] module 'system_lmb_bram_0' declared at 'C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.runs/synth_1/.Xil/Vivado-28776-ASUS-Soriano/realtime/system_lmb_bram_0_stub.vhdl:6' bound to instance 'lmb_bram' of component 'system_lmb_bram_0' [c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/synth/system.vhd:1885]
-INFO: [Synth 8-638] synthesizing module 'system_lmb_bram_0' [C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.runs/synth_1/.Xil/Vivado-28776-ASUS-Soriano/realtime/system_lmb_bram_0_stub.vhdl:28]
+INFO: [Synth 8-3491] module 'system_dlmb_bram_if_cntlr_0' declared at 'C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.runs/synth_1/.Xil/Vivado-19312-ASUS-Soriano/realtime/system_dlmb_bram_if_cntlr_0_stub.vhdl:6' bound to instance 'dlmb_bram_if_cntlr' of component 'system_dlmb_bram_if_cntlr_0' [c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/synth/system.vhd:1721]
+INFO: [Synth 8-638] synthesizing module 'system_dlmb_bram_if_cntlr_0' [C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.runs/synth_1/.Xil/Vivado-19312-ASUS-Soriano/realtime/system_dlmb_bram_if_cntlr_0_stub.vhdl:32]
+INFO: [Synth 8-3491] module 'system_dlmb_v10_0' declared at 'C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.runs/synth_1/.Xil/Vivado-19312-ASUS-Soriano/realtime/system_dlmb_v10_0_stub.vhdl:6' bound to instance 'dlmb_v10' of component 'system_dlmb_v10_0' [c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/synth/system.vhd:1775]
+INFO: [Synth 8-638] synthesizing module 'system_dlmb_v10_0' [C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.runs/synth_1/.Xil/Vivado-19312-ASUS-Soriano/realtime/system_dlmb_v10_0_stub.vhdl:37]
+INFO: [Synth 8-3491] module 'system_ilmb_bram_if_cntlr_0' declared at 'C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.runs/synth_1/.Xil/Vivado-19312-ASUS-Soriano/realtime/system_ilmb_bram_if_cntlr_0_stub.vhdl:6' bound to instance 'ilmb_bram_if_cntlr' of component 'system_ilmb_bram_if_cntlr_0' [c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/synth/system.vhd:1803]
+INFO: [Synth 8-638] synthesizing module 'system_ilmb_bram_if_cntlr_0' [C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.runs/synth_1/.Xil/Vivado-19312-ASUS-Soriano/realtime/system_ilmb_bram_if_cntlr_0_stub.vhdl:32]
+INFO: [Synth 8-3491] module 'system_ilmb_v10_0' declared at 'C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.runs/synth_1/.Xil/Vivado-19312-ASUS-Soriano/realtime/system_ilmb_v10_0_stub.vhdl:6' bound to instance 'ilmb_v10' of component 'system_ilmb_v10_0' [c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/synth/system.vhd:1857]
+INFO: [Synth 8-638] synthesizing module 'system_ilmb_v10_0' [C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.runs/synth_1/.Xil/Vivado-19312-ASUS-Soriano/realtime/system_ilmb_v10_0_stub.vhdl:37]
+INFO: [Synth 8-3491] module 'system_lmb_bram_0' declared at 'C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.runs/synth_1/.Xil/Vivado-19312-ASUS-Soriano/realtime/system_lmb_bram_0_stub.vhdl:6' bound to instance 'lmb_bram' of component 'system_lmb_bram_0' [c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/synth/system.vhd:1885]
+INFO: [Synth 8-638] synthesizing module 'system_lmb_bram_0' [C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.runs/synth_1/.Xil/Vivado-19312-ASUS-Soriano/realtime/system_lmb_bram_0_stub.vhdl:28]
 INFO: [Synth 8-256] done synthesizing module 'microblaze_0_local_memory_imp_OGE0N8' (0#1) [c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/synth/system.vhd:1507]
-INFO: [Synth 8-3491] module 'system_microblaze_0_xlconcat_0' declared at 'c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/ip/system_microblaze_0_xlconcat_0/synth/system_microblaze_0_xlconcat_0.v:53' bound to instance 'microblaze_0_xlconcat' of component 'system_microblaze_0_xlconcat_0' [c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/synth/system.vhd:4318]
+INFO: [Synth 8-3491] module 'system_microblaze_0_xlconcat_0' declared at 'c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/ip/system_microblaze_0_xlconcat_0/synth/system_microblaze_0_xlconcat_0.v:53' bound to instance 'microblaze_0_xlconcat' of component 'system_microblaze_0_xlconcat_0' [c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/synth/system.vhd:4311]
 INFO: [Synth 8-6157] synthesizing module 'system_microblaze_0_xlconcat_0' [c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/ip/system_microblaze_0_xlconcat_0/synth/system_microblaze_0_xlconcat_0.v:53]
 INFO: [Synth 8-6157] synthesizing module 'xlconcat_v2_1_5_xlconcat' [c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/ipshared/147b/hdl/xlconcat_v2_1_vl_rfs.v:59]
 INFO: [Synth 8-6155] done synthesizing module 'xlconcat_v2_1_5_xlconcat' (0#1) [c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/ipshared/147b/hdl/xlconcat_v2_1_vl_rfs.v:59]
 INFO: [Synth 8-6155] done synthesizing module 'system_microblaze_0_xlconcat_0' (0#1) [c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/ip/system_microblaze_0_xlconcat_0/synth/system_microblaze_0_xlconcat_0.v:53]
-INFO: [Synth 8-3491] module 'system_rst_clk_100M_0' declared at 'C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.runs/synth_1/.Xil/Vivado-28776-ASUS-Soriano/realtime/system_rst_clk_100M_0_stub.vhdl:6' bound to instance 'rst_clk_100M' of component 'system_rst_clk_100M_0' [c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/synth/system.vhd:4324]
-INFO: [Synth 8-638] synthesizing module 'system_rst_clk_100M_0' [C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.runs/synth_1/.Xil/Vivado-28776-ASUS-Soriano/realtime/system_rst_clk_100M_0_stub.vhdl:22]
-INFO: [Synth 8-3491] module 'system_rst_clk_100M_1' declared at 'C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.runs/synth_1/.Xil/Vivado-28776-ASUS-Soriano/realtime/system_rst_clk_100M_1_stub.vhdl:6' bound to instance 'rst_clk_250' of component 'system_rst_clk_100M_1' [c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/synth/system.vhd:4337]
-INFO: [Synth 8-638] synthesizing module 'system_rst_clk_100M_1' [C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.runs/synth_1/.Xil/Vivado-28776-ASUS-Soriano/realtime/system_rst_clk_100M_1_stub.vhdl:22]
-INFO: [Synth 8-3491] module 'system_util_ds_buf_0_0' declared at 'C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.runs/synth_1/.Xil/Vivado-28776-ASUS-Soriano/realtime/system_util_ds_buf_0_0_stub.vhdl:6' bound to instance 'util_ds_buf_0' of component 'system_util_ds_buf_0_0' [c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/synth/system.vhd:4350]
-INFO: [Synth 8-638] synthesizing module 'system_util_ds_buf_0_0' [C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.runs/synth_1/.Xil/Vivado-28776-ASUS-Soriano/realtime/system_util_ds_buf_0_0_stub.vhdl:14]
+INFO: [Synth 8-3491] module 'system_rst_clk_100M_0' declared at 'C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.runs/synth_1/.Xil/Vivado-19312-ASUS-Soriano/realtime/system_rst_clk_100M_0_stub.vhdl:6' bound to instance 'rst_clk_100M' of component 'system_rst_clk_100M_0' [c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/synth/system.vhd:4317]
+INFO: [Synth 8-638] synthesizing module 'system_rst_clk_100M_0' [C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.runs/synth_1/.Xil/Vivado-19312-ASUS-Soriano/realtime/system_rst_clk_100M_0_stub.vhdl:22]
+INFO: [Synth 8-3491] module 'system_rst_clk_100M_1' declared at 'C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.runs/synth_1/.Xil/Vivado-19312-ASUS-Soriano/realtime/system_rst_clk_100M_1_stub.vhdl:6' bound to instance 'rst_clk_250' of component 'system_rst_clk_100M_1' [c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/synth/system.vhd:4330]
+INFO: [Synth 8-638] synthesizing module 'system_rst_clk_100M_1' [C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.runs/synth_1/.Xil/Vivado-19312-ASUS-Soriano/realtime/system_rst_clk_100M_1_stub.vhdl:22]
 INFO: [Synth 8-256] done synthesizing module 'system' (0#1) [c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/synth/system.vhd:3312]
 INFO: [Synth 8-256] done synthesizing module 'system_wrapper' (0#1) [C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/hdl/system_wrapper.vhd:28]
 WARNING: [Synth 8-7129] Port In2[0] in module xlconcat_v2_1_5_xlconcat is either unconnected or has no load
@@ -206,18 +204,18 @@ WARNING: [Synth 8-7129] Port In100[0] in module xlconcat_v2_1_5_xlconcat is eith
 WARNING: [Synth 8-7129] Port In101[0] in module xlconcat_v2_1_5_xlconcat is either unconnected or has no load
 INFO: [Common 17-14] Message 'Synth 8-7129' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 1576.027 ; gain = 565.633
+Finished RTL Elaboration : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 1574.816 ; gain = 565.320
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 1576.027 ; gain = 565.633
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 1574.816 ; gain = 565.320
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 1576.027 ; gain = 565.633
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 1574.816 ; gain = 565.320
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.031 . Memory (MB): peak = 1576.027 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.032 . Memory (MB): peak = 1574.816 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
@@ -264,9 +262,8 @@ Parsing XDC File [c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_T
 Finished Parsing XDC File [c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/ip/system_rst_clk_100M_1/system_rst_clk_100M_1/system_rst_clk_100M_1_in_context.xdc] for cell 'system_i/rst_clk_250'
 Parsing XDC File [c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/ip/system_AXITDC_1_0/system_AXITDC_1_0/system_AXITDC_0_0_in_context.xdc] for cell 'system_i/AXITDC_1'
 Finished Parsing XDC File [c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/ip/system_AXITDC_1_0/system_AXITDC_1_0/system_AXITDC_0_0_in_context.xdc] for cell 'system_i/AXITDC_1'
-Parsing XDC File [c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/ip/system_util_ds_buf_0_0/system_util_ds_buf_0_0/system_util_ds_buf_0_0_in_context.xdc] for cell 'system_i/util_ds_buf_0'
-Finished Parsing XDC File [c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/ip/system_util_ds_buf_0_0/system_util_ds_buf_0_0/system_util_ds_buf_0_0_in_context.xdc] for cell 'system_i/util_ds_buf_0'
 Parsing XDC File [C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.srcs/constrs_1/imports/Downloads/Arty-A7-35-Master-clean.xdc]
+WARNING: [Constraints 18-619] A clock with name 'clk' already exists, overwriting the previous clock with the same name. [C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.srcs/constrs_1/imports/Downloads/Arty-A7-35-Master-clean.xdc:11]
 Finished Parsing XDC File [C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.srcs/constrs_1/imports/Downloads/Arty-A7-35-Master-clean.xdc]
 INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.srcs/constrs_1/imports/Downloads/Arty-A7-35-Master-clean.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/system_wrapper_propImpl.xdc].
 Resolution: To avoid this warning, move constraints listed in [.Xil/system_wrapper_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
@@ -276,28 +273,30 @@ Parsing XDC File [C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_T
 Finished Parsing XDC File [C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.runs/synth_1/dont_touch.xdc]
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1576.027 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1592.066 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
 The system cannot find the path specified.
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.009 . Memory (MB): peak = 1576.027 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.012 . Memory (MB): peak = 1592.066 ; gain = 0.000
 WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'system_i/microblaze_0_local_memory/lmb_bram' at clock pin 'clka' is different from the actual clock period '10.000', this can lead to different synthesis results.
 INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 1576.027 ; gain = 565.633
+Finished Constraint Validation : Time (s): cpu = 00:00:18 ; elapsed = 00:00:20 . Memory (MB): peak = 1592.066 ; gain = 582.570
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a35ticsg324-1L
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 1576.027 ; gain = 565.633
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:18 ; elapsed = 00:00:20 . Memory (MB): peak = 1592.066 ; gain = 582.570
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
+Applied set_property IO_BUFFER_TYPE = NONE for clk. (constraint file  c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/ip/system_clk_wiz_0_0/system_clk_wiz_0_0/system_clk_wiz_0_0_in_context.xdc, line 4).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for clk. (constraint file  c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/ip/system_clk_wiz_0_0/system_clk_wiz_0_0/system_clk_wiz_0_0_in_context.xdc, line 5).
 Applied set_property KEEP_HIERARCHY = SOFT for system_i. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for system_i/microblaze_0. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for system_i/axi_uartlite_0. (constraint file  auto generated constraint).
@@ -322,12 +321,11 @@ Applied set_property KEEP_HIERARCHY = SOFT for system_i/AXITDC_0. (constraint fi
 Applied set_property KEEP_HIERARCHY = SOFT for system_i/clk_wiz_0. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for system_i/rst_clk_250. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for system_i/AXITDC_1. (constraint file  auto generated constraint).
-Applied set_property KEEP_HIERARCHY = SOFT for system_i/util_ds_buf_0. (constraint file  auto generated constraint).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 1576.027 ; gain = 565.633
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:18 ; elapsed = 00:00:20 . Memory (MB): peak = 1592.066 ; gain = 582.570
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:17 ; elapsed = 00:00:18 . Memory (MB): peak = 1576.027 ; gain = 565.633
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 1592.066 ; gain = 582.570
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -350,25 +348,26 @@ Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:18 ; elapsed = 00:00:19 . Memory (MB): peak = 1576.027 ; gain = 565.633
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:20 ; elapsed = 00:00:22 . Memory (MB): peak = 1592.066 ; gain = 582.570
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
+WARNING: [Synth 8-565] redefining clock 'clk'
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:24 ; elapsed = 00:00:25 . Memory (MB): peak = 1576.027 ; gain = 565.633
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:27 ; elapsed = 00:00:29 . Memory (MB): peak = 1592.066 ; gain = 582.570
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:24 ; elapsed = 00:00:25 . Memory (MB): peak = 1576.027 ; gain = 565.633
+Finished Timing Optimization : Time (s): cpu = 00:00:27 ; elapsed = 00:00:29 . Memory (MB): peak = 1592.066 ; gain = 582.570
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:24 ; elapsed = 00:00:25 . Memory (MB): peak = 1576.027 ; gain = 565.633
+Finished Technology Mapping : Time (s): cpu = 00:00:27 ; elapsed = 00:00:29 . Memory (MB): peak = 1592.066 ; gain = 582.570
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -386,37 +385,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:29 ; elapsed = 00:00:30 . Memory (MB): peak = 1576.027 ; gain = 565.633
+Finished IO Insertion : Time (s): cpu = 00:00:33 ; elapsed = 00:00:35 . Memory (MB): peak = 1592.066 ; gain = 582.570
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:29 ; elapsed = 00:00:30 . Memory (MB): peak = 1576.027 ; gain = 565.633
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:33 ; elapsed = 00:00:35 . Memory (MB): peak = 1592.066 ; gain = 582.570
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:29 ; elapsed = 00:00:30 . Memory (MB): peak = 1576.027 ; gain = 565.633
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:33 ; elapsed = 00:00:35 . Memory (MB): peak = 1592.066 ; gain = 582.570
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:29 ; elapsed = 00:00:30 . Memory (MB): peak = 1576.027 ; gain = 565.633
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:33 ; elapsed = 00:00:35 . Memory (MB): peak = 1592.066 ; gain = 582.570
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:29 ; elapsed = 00:00:30 . Memory (MB): peak = 1576.027 ; gain = 565.633
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:33 ; elapsed = 00:00:35 . Memory (MB): peak = 1592.066 ; gain = 582.570
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:29 ; elapsed = 00:00:30 . Memory (MB): peak = 1576.027 ; gain = 565.633
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:33 ; elapsed = 00:00:35 . Memory (MB): peak = 1592.066 ; gain = 582.570
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -442,12 +441,11 @@ Report BlackBoxes:
 |14    |system_microblaze_0_axi_intc_0 |         1|
 |15    |system_rst_clk_100M_0          |         1|
 |16    |system_rst_clk_100M_1          |         1|
-|17    |system_util_ds_buf_0_0         |         1|
-|18    |system_dlmb_bram_if_cntlr_0    |         1|
-|19    |system_dlmb_v10_0              |         1|
-|20    |system_ilmb_bram_if_cntlr_0    |         1|
-|21    |system_ilmb_v10_0              |         1|
-|22    |system_lmb_bram_0              |         1|
+|17    |system_dlmb_bram_if_cntlr_0    |         1|
+|18    |system_dlmb_v10_0              |         1|
+|19    |system_ilmb_bram_if_cntlr_0    |         1|
+|20    |system_ilmb_v10_0              |         1|
+|21    |system_lmb_bram_0              |         1|
 +------+-------------------------------+----------+
 
 Report Cell Usage: 
@@ -474,32 +472,31 @@ Report Cell Usage:
 |18    |system_microblaze_0_axi_intc_0_bbox |     1|
 |19    |system_rst_clk_100M_0_bbox          |     1|
 |20    |system_rst_clk_100M_1_bbox          |     1|
-|21    |system_util_ds_buf_0_0_bbox         |     1|
-|22    |system_xbar_0_bbox                  |     1|
-|23    |IBUF                                |     5|
-|24    |OBUF                                |     7|
+|21    |system_xbar_0_bbox                  |     1|
+|22    |IBUF                                |     4|
+|23    |OBUF                                |     7|
 +------+------------------------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:29 ; elapsed = 00:00:30 . Memory (MB): peak = 1576.027 ; gain = 565.633
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:33 ; elapsed = 00:00:35 . Memory (MB): peak = 1592.066 ; gain = 582.570
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 7 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:19 ; elapsed = 00:00:28 . Memory (MB): peak = 1576.027 ; gain = 565.633
-Synthesis Optimization Complete : Time (s): cpu = 00:00:30 ; elapsed = 00:00:31 . Memory (MB): peak = 1576.027 ; gain = 565.633
+Synthesis finished with 0 errors, 0 critical warnings and 8 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:21 ; elapsed = 00:00:33 . Memory (MB): peak = 1592.066 ; gain = 565.320
+Synthesis Optimization Complete : Time (s): cpu = 00:00:33 ; elapsed = 00:00:35 . Memory (MB): peak = 1592.066 ; gain = 582.570
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.028 . Memory (MB): peak = 1576.027 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.041 . Memory (MB): peak = 1592.066 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1576.027 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1592.066 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
 The system cannot find the path specified.
-Synth Design complete | Checksum: 36ae4485
+Synth Design complete | Checksum: 977f309a
 INFO: [Common 17-83] Releasing license: Synthesis
-95 Infos, 102 Warnings, 0 Critical Warnings and 0 Errors encountered.
+93 Infos, 104 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:34 ; elapsed = 00:00:37 . Memory (MB): peak = 1576.027 ; gain = 961.195
-Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1576.027 ; gain = 0.000
+synth_design: Time (s): cpu = 00:00:38 ; elapsed = 00:00:42 . Memory (MB): peak = 1592.066 ; gain = 979.238
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1592.066 ; gain = 0.000
 INFO: [Common 17-1381] The checkpoint 'C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.runs/synth_1/system_wrapper.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file system_wrapper_utilization_synth.rpt -pb system_wrapper_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Sat Jun 28 15:42:09 2025...
+INFO: [Common 17-206] Exiting Vivado at Mon Jun 30 15:44:46 2025...

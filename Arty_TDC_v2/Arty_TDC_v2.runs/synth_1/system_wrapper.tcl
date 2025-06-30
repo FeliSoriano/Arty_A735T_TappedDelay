@@ -128,8 +128,6 @@ set_property used_in_implementation false [get_files -all c:/Users/alumn/Documen
 set_property used_in_implementation false [get_files -all c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/ip/system_AXITDC_1_0/src/axi_gpio_0/axi_gpio_0_ooc.xdc]
 set_property used_in_implementation false [get_files -all c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/ip/system_AXITDC_1_0/src/axi_gpio_0/axi_gpio_0.xdc]
 set_property used_in_implementation false [get_files -all c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/ip/system_AXITDC_1_0/src/Arty-A7-35-Master-clean.xdc]
-set_property used_in_implementation false [get_files -all c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/ip/system_util_ds_buf_0_0/system_util_ds_buf_0_0_board.xdc]
-set_property used_in_implementation false [get_files -all c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/ip/system_util_ds_buf_0_0/system_util_ds_buf_0_0_ooc.xdc]
 set_property used_in_synthesis false [get_files -all c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/ip/system_auto_cc_0/system_auto_cc_0_clocks.xdc]
 set_property used_in_implementation false [get_files -all c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/ip/system_auto_cc_0/system_auto_cc_0_clocks.xdc]
 set_property used_in_implementation false [get_files -all c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/ip/system_auto_cc_0/system_auto_cc_0_ooc.xdc]

@@ -147,7 +147,7 @@ def receive_chn_ts(ser, EoD = END_OF_DATA):
     print(f"Received {len(data)} timestamp entries.")
     return np.array(data, dtype=np.uint32)
 
-def save_ts(file_name, data, suffix='', current_ver = "v2_1_1"):
+def save_ts(file_name, data, suffix='', current_ver = "v2_1_3"):
     """
     Saves matrix or list of matrices (one per channel) to a .txt file, in CSV hex format.
     Handles single-channel (2D array) or multi-channel (list of 2D arrays) formats.
@@ -273,6 +273,10 @@ def paired_channel_run(ser, fileName, startChn, stopChn, timeBeforeReading = 10,
         # In this case the chn argument doesn't do anything
         # IT ACTUALLY DOES MATTER TODO: fix this 
         send_command(ser, startChn, PAIR_MODE) 
+        
+        time.sleep(10)
+        continue_msg(ser)
+        
         wait_for_message(ser, timeout = timeBeforeReading)
         for j in range(2):
             send_command(ser, chnOrder[j], READ_CHN)
@@ -291,18 +295,18 @@ def paired_channel_run(ser, fileName, startChn, stopChn, timeBeforeReading = 10,
 #%% Main code
 
 ser = serial.Serial('COM8', 115200, timeout = 0.5)
-chnNumber = 1
-nrOfRuns = 3
-fileName = "test"
+chnNumber = 0
+nrOfRuns = 2
+fileName = "Paired_01_100kHz"
 
 # ser.reset_input_buffer()
 if (wait_for_message(ser, "MicroBlaze READY", 80) ==  False):
     sys.exit()
     
 
-single_channel_run(ser, fileName, chnNumber)
+# single_channel_run(ser, fileName, chnNumber)
 
-# paired_channel_run(ser, fileName, 1, 0, nrOfRUns=nrOfRuns)
+paired_channel_run(ser, fileName, 1, 0, nrOfRUns=nrOfRuns)
 
 # send_command(ser, chnNumber, RUN_MODE)
 # wait_for_message(ser, timeout = 30)

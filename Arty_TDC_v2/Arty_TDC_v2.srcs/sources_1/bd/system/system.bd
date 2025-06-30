@@ -47,8 +47,7 @@
       "AXITDC_0": "",
       "clk_wiz_0": "",
       "rst_clk_250": "",
-      "AXITDC_1": "",
-      "util_ds_buf_0": ""
+      "AXITDC_1": ""
     },
     "interface_ports": {
       "usb_uart": {
@@ -1611,18 +1610,6 @@
             "memory_map_ref": "s_axi_1"
           }
         }
-      },
-      "util_ds_buf_0": {
-        "vlnv": "xilinx.com:ip:util_ds_buf:2.2",
-        "ip_revision": "31",
-        "xci_name": "system_util_ds_buf_0_0",
-        "xci_path": "ip\\system_util_ds_buf_0_0\\system_util_ds_buf_0_0.xci",
-        "inst_hier_path": "util_ds_buf_0",
-        "parameters": {
-          "C_BUF_TYPE": {
-            "value": "BUFG"
-          }
-        }
       }
     },
     "interface_nets": {
@@ -1709,7 +1696,7 @@
       "AXITDC_0_trigger_out": {
         "ports": [
           "AXITDC_0/trigger_out",
-          "AXITDC_0/trigger_in"
+          "AXITDC_1/trigger_in"
         ]
       },
       "AXITDC_1_led_out": {
@@ -1721,13 +1708,13 @@
       "AXITDC_1_trigger_out": {
         "ports": [
           "AXITDC_1/trigger_out",
-          "AXITDC_1/trigger_in"
+          "AXITDC_0/trigger_in"
         ]
       },
       "clk_1": {
         "ports": [
           "clk",
-          "util_ds_buf_0/BUFG_I"
+          "clk_wiz_0/clk_in1"
         ]
       },
       "clk_wiz_0_clk_out100": {
@@ -1824,12 +1811,6 @@
           "AXITDC_0/s_axi_aresetn",
           "AXITDC_1/s_axi_aresetn"
         ]
-      },
-      "util_ds_buf_0_BUFG_O": {
-        "ports": [
-          "util_ds_buf_0/BUFG_O",
-          "clk_wiz_0/clk_in1"
-        ]
       }
     },
     "addressing": {
@@ -1849,12 +1830,12 @@
               },
               "SEG_AXITDC_1_reg0": {
                 "address_block": "/AXITDC_1/s_axi/reg0",
-                "offset": "0x00030000",
+                "offset": "0x00021000",
                 "range": "4K"
               },
               "SEG_AXITDC_1_reg0_1": {
                 "address_block": "/AXITDC_1/s_axi_1/reg0",
-                "offset": "0x00034000",
+                "offset": "0x00028000",
                 "range": "16K"
               },
               "SEG_axi_uartlite_0_Reg": {

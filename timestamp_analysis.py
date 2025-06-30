@@ -222,7 +222,7 @@ def PlotCalibration(t, clk = 250E6, Ntaps = 192):
 
 #%% "Main"
 
-file = "C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/data_folder/v2_1/2025_06_28/CHN0_400kHz_1.txt"
+file = "C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/data_folder/v2_1_3/2025_06_30/400kHz_version_tests_1.txt"
 # data, data_sets = load_ts(file)
 
 # run_data = [data[:, i:i+2] for i in range(0, data_sets*2, 2)]
@@ -235,28 +235,34 @@ file = "C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/data_folder/v2_1/2025_06_28/
 data, _ = load_ts(file)
 PlotCalibration(data, Ntaps = 192)
 #%% Paired channels test
-fileP = "C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/data_folder/2025_06_26/Paired_1250kHz_CHN1_.txt"
+fileP = "C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/data_folder/v2_1_3/2025_06_30/Paired_01_100kHz_2.txt"
 
-
-
+file0 = "C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/data_folder/v2_1_3/2025_06_30/400kHz_version_tests_CHN0_1.txt"
+file1 = "C:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/data_folder/v2_1_3/2025_06_30/400kHz_version_tests_CHN1_1.txt"
 num_cols = 2  # or 6, or however many columns your file has
 converters = {i: lambda x: int(x, 16) for i in range(num_cols)}
 
 # Calibrating Time-stamps using another measurement
 
-data0 = np.loadtxt(file6, delimiter = ",", skiprows = 1, converters = converters)
-data1 = np.loadtxt(file7, delimiter = ",", skiprows = 1, converters = converters)
+data0 = np.loadtxt(file0, delimiter = ",", skiprows = 1, converters = converters)
+data1 = np.loadtxt(file1, delimiter = ",", skiprows = 1, converters = converters)
 
 table_0, max_tap0 = GenerateCalib(data0)
 table_1, max_tap1 = GenerateCalib(data1)
 
+
 num_cols = 4  # or 6, or however many columns your file has
 converters = {i: lambda x: int(x, 16) for i in range(num_cols)}
 
-data = np.loadtxt(fileP, delimiter=",", skiprows=1, dtype='uint32', converters=converters)
+raw_data, nr_of_sets = load_ts(fileP)
 
-data0 = [[data[i][0], data[i][1]] for i in range(len(data))]
-data1 = [[data[i][2], data[i][3]] for i in range(len(data))]
+run_data = [raw_data[:, i:i+2] for i in range(0, nr_of_sets*2, 2)]
+
+data1 = run_data[0]
+data0 = run_data[1]
+
+# data0 = [[data[i][0], data[i][1]] for i in range(len(data))]
+# data1 = [[data[i][2], data[i][3]] for i in range(len(data))]
 
 
 fine_0, coarse_0, trig_0 = DecodeVals(data0)
@@ -265,12 +271,19 @@ fine_1, coarse_1, trig_1 = DecodeVals(data1)
 ts0 = CalculateTs(coarse_0, fine_0, table_0, max_tap0) 
 ts1 = CalculateTs(coarse_1, fine_1, table_1, max_tap1) 
 
+plt.figure(1001)
+plt.plot(trig_0)
+plt.plot(trig_1)
+
 PlotCalibration(data0)
 PlotCalibration(data1)
 
 ts0 = [i*1E12 for i in ts0]
 ts1 = [i*1E12 for i in ts1]
 
+for i in range(4):
+    print(f"{i}) ts0[i] = {ts0[i]}")
+    print(f"{i}) ts1[i] = {ts1[i]}\n")
 idx0 = 0
 idx1 = 0
 dt = []
@@ -282,11 +295,16 @@ for j in range(np.minimum(len(trig_0), len(trig_1)) - 1):
     elif (trig_1[idx1] == trig_0[idx0]):
         idx0 += 1
         idx1 += 1
-        dt.append(ts0[idx0] - ts1[idx1])
+        dt.append(ts1[idx1] - ts0[idx0])
 
 mu = np.mean(dt)
 print(mu)
-dt = RemoveOutliers(dt, mu*(1-0.01), mu*(1+0.01))
+plt.figure(666)
+plt.hist(dt, density=False, bins = 100)
+dt = RemoveOutliers(dt, -4E-8, 0.2E7)
+
+dt = [i+4000 for i in dt if i < -1000]
+
 mu = np.mean(dt)
 print(mu)
 
@@ -300,7 +318,7 @@ dt = np.asarray(dt)
 
 plt.figure(11)
 # plt.title("TDC time resolution", size=14)
-plt.hist(dt, density=True)
+plt.hist(dt, density=False, bins = 100)
 # # p = norm.pdf(x, mu, std)
 # #p = cauchy.pdf(x, loc, scale)
 # # plt.plot(x, p, linewidth=2)

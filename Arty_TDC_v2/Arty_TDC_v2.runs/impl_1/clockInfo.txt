@@ -1,6 +1,6 @@
 -------------------------------------
 | Tool Version : Vivado v.2023.2
-| Date         : Sat Jun 28 15:43:18 2025
+| Date         : Mon Jun 30 15:46:03 2025
 | Host         : ASUS-Soriano
 | Design       : design_1
 | Device       : xc7a35ti-csg324-1L-I-
