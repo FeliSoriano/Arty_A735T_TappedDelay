@@ -31,7 +31,6 @@ int main() {
     if (uart_receive_msg(op_buffer, sizeof(op_buffer), uartLiteInstance)) {
       op = op_buffer[0];
       chnNumber = (int)(op_buffer[1] - '0');
-
     } else {
       continue;
     }
@@ -42,38 +41,43 @@ int main() {
       break;
 
     case '1': /* set run mode */
+      if (entries == BRAMsize) {
+        xil_printf("Warning! channel is already full\n\r");
+      }
+
       set_run(chnNumber);
       print_states(chnNumber);
       break;
 
-    case '2':
+    case '2': /* Read TDC Channel */
       entries = readCHN(chnNumber, &uartLiteInstance);
-      if (entries == BRAMsize && !paired) {
-        set_clr(chnNumber);
-      } else if (paired && chnNumber == 0) {
-        set_clr(1);
-        set_clr(0);
-      }
+
       break;
 
-    case '3':
-      rearmCHN(chnNumber);
+    case '3': /* Clear TDC channel - have to think how this works with paired
+                 TDCs, for now it's up to the user.*/
+      clearCHN(chnNumber, &uartLiteInstance);
+      entries = 0;
       break;
 
-    case '4': /* two channel routine - made for quick testing */
-      paired = 1;
+    case '4':     /* two channel routine - made for quick testing */
+      paired = 1; /* Not really neccessary so far */
 
+      /* Make sure both are idle, the order doesn't matter here*/
       set_idle(0);
       set_idle(1);
 
       wait_for_flag(&uartLiteInstance);
       xil_printf("Pairing CHN0 & CHN1\n\r");
 
-      set_run(0);
-      set_run(1);
-
-      // readCHN(0, uartLiteInstance);
-      // readCHN(1, uartLiteInstance);
+      /* TODO: Think of a way to scale this to a higher number of channels */
+      if (chnNumber == 0) {
+        set_run(0);
+        set_run(1);
+      } else {
+        set_run(1);
+        set_run(0);
+      }
 
     default:
       break;

@@ -43,7 +43,7 @@ void clr_run(int chnNumber);
 void clr_clr(int chnNumber);
 
 /* TDC Handling functions */
-void rearmCHN(int chnNumber);
+void clearCHN(int chnNumber, XUartLite *uartLiteInstance);
 int readCHN(int chnNumber, XUartLite *uartLiteInstance);
 
 /* Communication related functions */

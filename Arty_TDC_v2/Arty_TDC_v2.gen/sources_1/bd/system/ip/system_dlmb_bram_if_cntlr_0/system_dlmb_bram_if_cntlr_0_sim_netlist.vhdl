@@ -2,7 +2,7 @@
 -- Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
--- Date        : Wed Jun 25 13:48:26 2025
+-- Date        : Mon Jun 30 17:41:52 2025
 -- Host        : ASUS-Soriano running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               c:/Users/alumn/Documents/UNSAM/PFI/Arty_TDC/Arty_TDC_v2/Arty_TDC_v2.gen/sources_1/bd/system/ip/system_dlmb_bram_if_cntlr_0/system_dlmb_bram_if_cntlr_0_sim_netlist.vhdl
@@ -170,7 +170,7 @@ entity system_dlmb_bram_if_cntlr_0_lmb_bram_if_cntlr is
   attribute C_LMB_PROTOCOL : integer;
   attribute C_LMB_PROTOCOL of system_dlmb_bram_if_cntlr_0_lmb_bram_if_cntlr : entity is 0;
   attribute C_MASK : string;
-  attribute C_MASK of system_dlmb_bram_if_cntlr_0_lmb_bram_if_cntlr : entity is "64'b0000000000000000000000000000000000000000001000100000000000000000";
+  attribute C_MASK of system_dlmb_bram_if_cntlr_0_lmb_bram_if_cntlr : entity is "64'b0000000000000000000000000000000000000000011000000000000000000000";
   attribute C_MASK1 : string;
   attribute C_MASK1 of system_dlmb_bram_if_cntlr_0_lmb_bram_if_cntlr : entity is "64'b0000000000000000000000000000000000000000100000000000000000000000";
   attribute C_MASK2 : string;
@@ -538,8 +538,8 @@ begin
     )
         port map (
       I0 => LMB_WriteStrobe,
-      I1 => \^lmb_abus\(14),
-      I2 => \^lmb_abus\(10),
+      I1 => \^lmb_abus\(10),
+      I2 => \^lmb_abus\(9),
       I3 => LMB_BE(0),
       O => BRAM_WEN_A(0)
     );
@@ -549,8 +549,8 @@ begin
     )
         port map (
       I0 => LMB_WriteStrobe,
-      I1 => \^lmb_abus\(14),
-      I2 => \^lmb_abus\(10),
+      I1 => \^lmb_abus\(10),
+      I2 => \^lmb_abus\(9),
       I3 => LMB_BE(1),
       O => BRAM_WEN_A(1)
     );
@@ -560,8 +560,8 @@ begin
     )
         port map (
       I0 => LMB_WriteStrobe,
-      I1 => \^lmb_abus\(14),
-      I2 => \^lmb_abus\(10),
+      I1 => \^lmb_abus\(10),
+      I2 => \^lmb_abus\(9),
       I3 => LMB_BE(2),
       O => BRAM_WEN_A(2)
     );
@@ -571,8 +571,8 @@ begin
     )
         port map (
       I0 => LMB_WriteStrobe,
-      I1 => \^lmb_abus\(14),
-      I2 => \^lmb_abus\(10),
+      I1 => \^lmb_abus\(10),
+      I2 => \^lmb_abus\(9),
       I3 => LMB_BE(3),
       O => BRAM_WEN_A(3)
     );
@@ -585,8 +585,8 @@ GND: unisim.vcomponents.GND
       INIT => X"01"
     )
         port map (
-      I0 => \^lmb_abus\(10),
-      I1 => \^lmb_abus\(14),
+      I0 => \^lmb_abus\(9),
+      I1 => \^lmb_abus\(10),
       I2 => LMB_Rst,
       O => \No_ECC.Sl_Rdy_i_1_n_0\
     );
@@ -747,7 +747,7 @@ architecture STRUCTURE of system_dlmb_bram_if_cntlr_0 is
   attribute C_LMB_PROTOCOL : integer;
   attribute C_LMB_PROTOCOL of U0 : label is 0;
   attribute C_MASK : string;
-  attribute C_MASK of U0 : label is "64'b0000000000000000000000000000000000000000001000100000000000000000";
+  attribute C_MASK of U0 : label is "64'b0000000000000000000000000000000000000000011000000000000000000000";
   attribute C_MASK1 : string;
   attribute C_MASK1 of U0 : label is "64'b0000000000000000000000000000000000000000100000000000000000000000";
   attribute C_MASK2 : string;
@@ -784,7 +784,7 @@ architecture STRUCTURE of system_dlmb_bram_if_cntlr_0 is
   attribute x_interface_parameter of BRAM_Rst_A : signal is "XIL_INTERFACENAME BRAM_PORT, MEM_SIZE 131072, MASTER_TYPE BRAM_CTRL, MEM_WIDTH 32, MEM_ECC NONE, READ_LATENCY 1";
   attribute x_interface_info of LMB_AddrStrobe : signal is "xilinx.com:interface:lmb:1.0 SLMB ADDRSTROBE";
   attribute x_interface_info of LMB_Clk : signal is "xilinx.com:signal:clock:1.0 CLK.LMB_Clk CLK";
-  attribute x_interface_parameter of LMB_Clk : signal is "XIL_INTERFACENAME CLK.LMB_Clk, ASSOCIATED_BUSIF SLMB:SLMB1:SLMB2:SLMB3:SLMB4:SLMB5:SLMB6:SLMB7, ASSOCIATED_RESET LMB_Rst, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN system_clk, INSERT_VIP 0";
+  attribute x_interface_parameter of LMB_Clk : signal is "XIL_INTERFACENAME CLK.LMB_Clk, ASSOCIATED_BUSIF SLMB:SLMB1:SLMB2:SLMB3:SLMB4:SLMB5:SLMB6:SLMB7, ASSOCIATED_RESET LMB_Rst, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN /clk_wiz_0_clk_out1, INSERT_VIP 0";
   attribute x_interface_info of LMB_ReadStrobe : signal is "xilinx.com:interface:lmb:1.0 SLMB READSTROBE";
   attribute x_interface_info of LMB_Rst : signal is "xilinx.com:signal:reset:1.0 RST.LMB_Rst RST";
   attribute x_interface_parameter of LMB_Rst : signal is "XIL_INTERFACENAME RST.LMB_Rst, POLARITY ACTIVE_HIGH, TYPE INTERCONNECT, INSERT_VIP 0";

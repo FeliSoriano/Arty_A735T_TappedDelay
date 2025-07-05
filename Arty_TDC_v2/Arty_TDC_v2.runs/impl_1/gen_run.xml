@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="impl_1" LaunchPart="xc7a35ticsg324-1L" LaunchTime="1751309018">
+<GenRun Id="impl_1" LaunchPart="xc7a35ticsg324-1L" LaunchTime="1751316061">
   <File Type="ROUTE-PWR" Name="system_wrapper_power_routed.rpt"/>
   <File Type="PA-TCL" Name="system_wrapper.tcl"/>
   <File Type="ROUTE-PWR-SUM" Name="system_wrapper_power_summary_routed.pb"/>
@@ -128,6 +128,7 @@
       </FileInfo>
     </File>
     <Config>
+      <Option Name="TargetConstrsFile" Val="$PSRCDIR/constrs_1/imports/Downloads/Arty-A7-35-Master-clean.xdc"/>
       <Option Name="ConstrsType" Val="XDC"/>
     </Config>
   </FileSet>
@@ -169,4 +170,5 @@
   <BlockFileSet Type="BlockSrcs" Name="system_axi_uartlite_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="system_lmb_bram_0"/>
   <BlockFileSet Type="BlockSrcs" Name="system_dlmb_v10_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="system_xbar_0"/>
 </GenRun>

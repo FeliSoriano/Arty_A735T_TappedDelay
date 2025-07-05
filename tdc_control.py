@@ -21,7 +21,7 @@ TODO: Finish adding possible received messages
 EXIT_PROGRAM  = '0'
 RUN_MODE      = '1'
 READ_CHN      = '2'
-REARM_TDC     = '3'
+CLEAR_CHN     = '3'
 PAIR_MODE     = '4'
 CONTINUE_FLAG = 'F'
 TEST_STATES   = 'T'
@@ -228,6 +228,7 @@ def single_channel_run(ser, fileName, chnNumber, timeBeforeReading = 10, nrOfRun
     for i in range(nrOfRuns):
         
         send_command(ser, chnNumber, RUN_MODE)
+        
         # Wait x time after setting RUN_MODE before actually reading the data
         wait_for_message(ser, timeout = timeBeforeReading) 
         
@@ -240,24 +241,23 @@ def single_channel_run(ser, fileName, chnNumber, timeBeforeReading = 10, nrOfRun
         data.append(receive_chn_ts(ser))
 
         if (nrOfRuns > 1):
-            send_command(ser, chnNumber, REARM_TDC)
-            wait_for_message(ser, f"Rearming CHN{chnNumber}", 5)
+            # TODO: After testing that this works, turn this 4 lines into a function!
+            send_command(ser, chnNumber, CLEAR_CHN)
+            time.sleep(5)
+            continue_msg(ser)
+            wait_for_message(ser, f"CHN{chnNumber} Cleared", 10)
     # if len(data[0]) > 0:       
-    save_ts(fileName, data, nrOfRuns)
+    save_ts(fileName, data, f"{nrOfRuns}runs") #TODO: DECIDE ON A GOOD SUFFIX
     
     
 def paired_channel_run(ser, fileName, startChn, stopChn, timeBeforeReading = 10, nrOfRUns = 1):
     """
-    Paired channel run rutine. 
+    Paired channel run rutine. startChn is the first channel to be set to run. It is also the last channel
+    to be cleared. 
     
     Parameters:
         ser           : The serial.Serial object
         fileName (str): Name of the file where the data will be saved
-        
-        THIS IS WRONG. THIS FUNCTION MAKE SIT SO THAT startChn AND stopChn ARE
-        THE ORDER OF READING, NOT THE ACTUAL SETTING OF START AND STOP CHN. THIS IS
-        ACTUALLY GIVEN DEPENDING ON WICH CHANNEL WAS SET TO RUN FIRST. FIX
-        
         
         startChn(int) : TDC channel to be used to mark the 'start' of the event
         stopChn (int) : TDC channel to be used to mark the 'stop' of the event
@@ -285,28 +285,33 @@ def paired_channel_run(ser, fileName, startChn, stopChn, timeBeforeReading = 10,
             continue_msg(ser)
             pairedData.append(receive_chn_ts(ser))
             
-        if (nrOfRuns > 1):
-            send_command(ser, startChn, REARM_TDC)
-            wait_for_message(ser, f"Rearming CHN{startChn}", 10)
-            send_command(ser, stopChn, REARM_TDC)
-            wait_for_message(ser, f"Rearming CHN{stopChn}", 10)
+        if (nrOfRuns > 1): # Clear STOP channel first
+            send_command(ser, chnOrder[1], CLEAR_CHN)
+            time.sleep(5)
+            continue_msg(ser)
+            wait_for_message(ser, f"CHN{chnOrder[-1]} Cleared", 5)
 
-    save_ts(fileName, pairedData, nrOfRUns)
+            send_command(ser, chnOrder[0], CLEAR_CHN)
+            time.sleep(5)
+            continue_msg(ser)
+            wait_for_message(ser, f"CHN{chnOrder[-1]} Cleared", 5)
+
+    save_ts(fileName, pairedData, f"{nrOfRUns}runs")
 #%% Main code
 
 ser = serial.Serial('COM8', 115200, timeout = 0.5)
-chnNumber = 0
-nrOfRuns = 2
-fileName = "Paired_01_100kHz"
+chnNumber = 1
+nrOfRuns = 10
+fileName = "CAEN_Poisson_CHN1_100kHz"
 
 # ser.reset_input_buffer()
 if (wait_for_message(ser, "MicroBlaze READY", 80) ==  False):
     sys.exit()
     
+# send_command(ser, 0, RUN_MODE)
+single_channel_run(ser, fileName, chnNumber, nrOfRuns = nrOfRuns, timeBeforeReading=3)
 
-# single_channel_run(ser, fileName, chnNumber)
-
-paired_channel_run(ser, fileName, 1, 0, nrOfRUns=nrOfRuns)
+# paired_channel_run(ser, fileName, 0, 1, nrOfRUns=nrOfRuns)
 
 # send_command(ser, chnNumber, RUN_MODE)
 # wait_for_message(ser, timeout = 30)
@@ -317,7 +322,7 @@ paired_channel_run(ser, fileName, 1, 0, nrOfRUns=nrOfRuns)
 
 # time.sleep(5)
 serial_write(ser, EXIT_PROGRAM)
-wait_for_message(ser, timeout = 20)
+wait_for_message(ser, timeout = 5)
 
 ser.close()
 

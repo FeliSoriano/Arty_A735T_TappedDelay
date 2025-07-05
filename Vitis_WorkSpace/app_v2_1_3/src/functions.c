@@ -122,11 +122,11 @@ uint8_t wait_for_flag(XUartLite *uartLiteInstance) {
    * is received instead.
    */
   char c = '0';
-  while (c != CONTINUE) {
+  while (1) {
     while (!XUartLite_IsReceiveEmpty(uartLiteInstance->RegBaseAddress)) {
       XUartLite_Recv(uartLiteInstance, (u8 *)&c, 1);
       // xil_printf("%c", c);  // Echo back the character
-      if (c == 'F')
+      if (c == CONTINUE)
         return 1;
       else if (c == '\n' || c == '\r')
         return 0;
@@ -328,29 +328,31 @@ int readCHN(int chnNumber, XUartLite *uartLiteInstance) {
   return n;
 }
 
-void rearmCHN(int chnNumber) {
+void clearCHN(int chnNumber, XUartLite *uartLiteInstance) {
   /**
-   * @brief Waits until channel is cleared and then set's it to run.
+   * @brief Clears the BRAM of the corresponding TDC channel
    *
-   * @param[in] chnNumber. Number of the channel whose data is being read.
+   * @param[in] chnNumber. TDC channel number
    *
    *
-   * @pre pray somene had set the TDC channel to clear
-   *
-   * @post Set's the TDC back to run. TODO: Think if it should be sent to IDLE
+   * @post Leaves a cleared TDC-BRAM.
    instead
    */
   // uint32_t bram_base = CHN0_BRAMADDR;
   uint32_t ctrl_base = CHANNELS_BASEADDR[chnNumber];
   print_states(chnNumber);
-  /* let's just pray someone got us into a CLR
-  state and that it will eventually finish with no issues */
-  while (is_full(ctrl_base)) {
-    ; /* this is supposed to wait until we reach CLR_DONE */
-  }
 
-  xil_printf("\n\rRearming CHN%d\n\r", chnNumber);
-  set_run(ctrl_base); /* clr back to 0 and run to 1*/
+  set_clr(chnNumber);
+  // while (is_full(ctrl_base)) {
+  //   ; /* TODO: this is supposed to stay still untill the full flag is cleared,
+  //      * meaning the channel is now empty. There are a LOT of problems with this
+  //      * workflow, so until I figure out how to change this, we are going to
+  //      * just wait until someone tell's us to continue.
+  //      */
+  // }
+  xil_printf("\n\rCHN%d Cleared\n\r", chnNumber);
+
+  wait_for_flag(uartLiteInstance);
 }
 
 /* ===  END TDC handling functions  === */

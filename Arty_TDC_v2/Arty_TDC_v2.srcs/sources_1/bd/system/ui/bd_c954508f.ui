@@ -1,7 +1,7 @@
 {
    "ActiveEmotionalView":"Default View",
    "Default View_ScaleFactor":"0.914852",
-   "Default View_TopLeft":"543,153",
+   "Default View_TopLeft":"1609,0",
    "ExpandedHierarchyInLayout":"",
    "guistr":"# # String gsaved with Nlview 7.5.8 2022-09-21 7111 VDI=41 GEI=38 GUI=JA:10.0
 #  -string -flagsOSRD
@@ -25,7 +25,10 @@ preplace inst clk_wiz_0 -pg 1 -lvl 1 -x 340 -y 580 -defaultsOSRD -resize 140 96
 preplace inst rst_clk_250 -pg 1 -lvl 4 -x 1330 -y 390 -defaultsOSRD
 preplace inst AXITDC_1 -pg 1 -lvl 6 -x 2110 -y 360 -defaultsOSRD
 preplace netloc AXITDC_0_led_out 1 6 1 NJ 130
+preplace netloc AXITDC_0_trigger_out 1 5 2 1970 240 2250
 preplace netloc AXITDC_1_led_out 1 6 1 NJ 370
+preplace netloc AXITDC_1_trigger_out 1 5 2 1960 480 2250
+preplace netloc clk_1 1 0 1 N 580
 preplace netloc clk_wiz_0_clk_out100 1 1 5 440 600 800 660 1100 670 1600 670 NJ
 preplace netloc clk_wiz_0_clk_out250 1 1 5 430 360 NJ 360 1080 290 1580 20 1930
 preplace netloc hit0_1 1 0 6 NJ 50 NJ 50 800J 30 NJ 30 NJ 30 1960J
@@ -37,9 +40,6 @@ preplace netloc rst_clk_100M_bus_struct_reset 1 2 3 NJ 690 NJ 690 1560
 preplace netloc rst_clk_100M_mb_reset 1 2 2 810 670 1090
 preplace netloc rst_clk_100M_peripheral_aresetn 1 2 4 820 700 NJ 700 1590 690 NJ
 preplace netloc rst_clk_250_peripheral_aresetn 1 4 2 1570 50 1920
-preplace netloc clk_1 1 0 1 N 580
-preplace netloc AXITDC_0_trigger_out 1 5 2 1970 240 2250
-preplace netloc AXITDC_1_trigger_out 1 5 2 1960 480 2250
 preplace netloc axi_uartlite_0_UART 1 6 1 NJ 660
 preplace netloc microblaze_0_axi_dp 1 4 1 1560 110n
 preplace netloc microblaze_0_axi_periph_M01_AXI 1 5 1 1880 240n
